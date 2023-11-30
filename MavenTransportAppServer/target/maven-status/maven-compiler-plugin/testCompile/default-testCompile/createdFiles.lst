@@ -1,0 +1,12 @@
+fon\ai\maventransportappserver\so\impl\SaveTrailerOperationTest.class
+fon\ai\maventransportappserver\so\impl\SaveTruckOperationTest.class
+fon\ai\maventransportappserver\so\impl\TakeDriveByIDOperationTest.class
+fon\ai\maventransportappserver\so\impl\ImplSuite.class
+fon\ai\maventransportappserver\so\AbstractGenericOperationTest.class
+fon\ai\maventransportappserver\so\impl\TakeDriversOperationTest.class
+fon\ai\maventransportappserver\so\impl\SaveDriveOperationTest.class
+fon\ai\maventransportappserver\so\impl\TakeTrailersOperationTest.class
+fon\ai\maventransportappserver\so\impl\TakeTrucksOperationTest.class
+fon\ai\maventransportappserver\so\impl\SaveDriverOperationTest.class
+fon\ai\maventransportappserver\so\SoSuite.class
+fon\ai\maventransportappserver\so\impl\LoginOperationTest.class

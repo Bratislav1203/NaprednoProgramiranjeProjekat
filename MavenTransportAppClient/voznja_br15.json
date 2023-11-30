@@ -1,0 +1,19 @@
+{
+  "id": 15,
+  "date": "May 5, 2023",
+  "facturePrice": 2200.0,
+  "tr": {
+    "loadCapacity": 0.0,
+    "productYear": 0,
+    "registrationMark": "AA447RA",
+    "weight": 0.0
+  },
+  "t": {
+    "productYear": 0,
+    "registrationMark": "RA015CC",
+    "weight": 0.0
+  },
+  "d": {
+    "IDCard": 203023021
+  }
+}

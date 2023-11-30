@@ -1,0 +1,19 @@
+{
+  "id": 88,
+  "date": "Jan 1, 2021",
+  "facturePrice": 2.0,
+  "tr": {
+    "loadCapacity": 0.0,
+    "productYear": 0,
+    "registrationMark": "AA447BG",
+    "weight": 0.0
+  },
+  "t": {
+    "productYear": 0,
+    "registrationMark": "RA013CD",
+    "weight": 0.0
+  },
+  "d": {
+    "IDCard": 12345678
+  }
+}
