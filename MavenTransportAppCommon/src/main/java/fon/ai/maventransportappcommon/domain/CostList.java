@@ -21,6 +21,11 @@ import java.text.SimpleDateFormat;
  */
 public class CostList implements IGeneralEntity {
 
+	public CostList(int id) {
+		super();
+		this.id = id;
+	}
+
 	/**
 	 * Privatni atribut koji predstavlja identifikacioni broj voznje.
 	 */

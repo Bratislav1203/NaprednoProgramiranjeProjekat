@@ -7,7 +7,9 @@ package fon.ai.maventransportappcommon.domain;
 
 import java.io.Serializable;
 import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -48,8 +50,7 @@ public class CostItem implements Serializable, IGeneralEntity {
 		this.costType = costType;
 		this.amount = amount;
 		this.costList = costList;
-		
-		System.out.println("Just test Common");
+
 	}
 
 	/**
@@ -137,8 +138,7 @@ public class CostItem implements Serializable, IGeneralEntity {
 	 */
 	@Override
 	public String setAttributes() {
-		throw new UnsupportedOperationException("Not supported yet."); // To change body of generated methods, choose
-																		// Tools | Templates.
+		return "amount = " + getAmount();
 	}
 
 	/**
@@ -149,8 +149,8 @@ public class CostItem implements Serializable, IGeneralEntity {
 	 */
 	@Override
 	public String getDeleteCondition() {
-		throw new UnsupportedOperationException("Not supported yet."); // To change body of generated methods, choose
-																		// Tools | Templates.
+		return "costlist = '" + getCostList().getId() + "' AND costType = '" + getCostType().toString().toLowerCase()
+				+ "'";
 	}
 
 	/**
@@ -161,8 +161,8 @@ public class CostItem implements Serializable, IGeneralEntity {
 	 */
 	@Override
 	public String getUpdateCondition() {
-		throw new UnsupportedOperationException("Not supported yet."); // To change body of generated methods, choose
-																		// Tools | Templates.
+		return "costlist = '" + getCostList().getId() + "' AND costType = '" + getCostType().toString().toLowerCase()
+				+ "'";
 	}
 
 	/**
@@ -211,7 +211,5 @@ public class CostItem implements Serializable, IGeneralEntity {
 	public void setAmount(double amount) {
 		this.amount = amount;
 	}
-
-
 
 }

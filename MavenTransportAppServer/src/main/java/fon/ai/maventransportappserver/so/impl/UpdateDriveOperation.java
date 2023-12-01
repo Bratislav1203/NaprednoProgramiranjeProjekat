@@ -26,7 +26,6 @@ public class UpdateDriveOperation extends AbstractGenericOperation {
 
     @Override
     public void execute(Object entity) throws Exception {
-        Drive d = (Drive) entity;
         db.izmeni((IGeneralEntity) entity);
         
     }

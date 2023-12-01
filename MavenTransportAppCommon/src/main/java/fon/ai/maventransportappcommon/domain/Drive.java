@@ -257,7 +257,8 @@ public class Drive implements Serializable, IGeneralEntity {
 			
 			driver.setIDCard(resultSet.getInt("driver"));
 			int id = resultSet.getInt("id");
-			list.add(new Drive(id, datumsql, facturePrice, trailer, truck, driver));
+			
+			list.add(new Drive(id, datumsql, facturePrice, trailer, truck, driver, new CostList(id)));
 		}
 		return list;
 	}

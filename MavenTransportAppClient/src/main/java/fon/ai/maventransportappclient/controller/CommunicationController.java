@@ -226,6 +226,28 @@ public class CommunicationController {
             throw response.getException();
         }
     }
+    
+    public void deleteCostList(CostList cl) throws Exception{
+        RequestObject request = new RequestObject();
+        request.setData(cl);
+        request.setOperation(Operation.DELETE_COST_LIST);
+        sendRequest(request);
+        ResponseObject response = receiveResponse();
+        if(response.getStatus() == ResponseStatus.ERROR){
+            throw response.getException();
+        }
+    }
+
+    public void deleteCostItem(CostItem c) throws Exception{
+        RequestObject request = new RequestObject();
+        request.setData(c);
+        request.setOperation(Operation.DELETE_COST_ITEM);
+        sendRequest(request);
+        ResponseObject response = receiveResponse();
+        if(response.getStatus() == ResponseStatus.ERROR){
+            throw response.getException();
+        }
+    }
 
     public Drive vratiVoznjuPoIDu(Drive d)throws Exception {
         RequestObject request = new RequestObject();
@@ -250,6 +272,17 @@ public class CommunicationController {
             throw response.getException();
         }
     }
+   
+   public void updateCostItem(CostItem costItem) throws Exception {
+       RequestObject request = new RequestObject();
+       request.setData(costItem);
+       request.setOperation(Operation.UPDATE_COST_ITEM);
+       sendRequest(request);
+       ResponseObject response = receiveResponse();
+       if(response.getStatus() == ResponseStatus.ERROR){
+           throw response.getException();
+       }
+   }
 
     public void setCosts(ArrayList<CostItem> costs) {
         this.costs = costs;
@@ -259,13 +292,13 @@ public class CommunicationController {
         return costs;
     }
 
-    public List<CostItem> vratiTroskove() throws Exception {
+    public ArrayList<CostItem> vratiTroskove() throws Exception {
         RequestObject request = new RequestObject();
         request.setOperation(Operation.TAKE_COST);
         sendRequest(request);
         ResponseObject response = receiveResponse();
         if(response.getStatus() == ResponseStatus.SUCCESS){
-            return (List<CostItem>)response.getData();
+            return (ArrayList<CostItem>)response.getData();
         }else{
             throw response.getException();
         }

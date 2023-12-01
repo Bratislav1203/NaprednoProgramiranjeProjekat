@@ -311,6 +311,9 @@ public class FDrive extends javax.swing.JFrame {
                     drive.setD(d);
                     drive.setId(cmrNumber);
                     CommunicationController.getInstance().updateDrive(drive);
+                    for(CostItem c : CommunicationController.getInstance().getCosts()) {
+                    	CommunicationController.getInstance().updateCostItem(c);
+                    }
                     JOptionPane.showMessageDialog(this, "Uspesno izmenjena voznja u bazu!");
                     parent.setEnabled(true);
                     parent.srediTabelu();

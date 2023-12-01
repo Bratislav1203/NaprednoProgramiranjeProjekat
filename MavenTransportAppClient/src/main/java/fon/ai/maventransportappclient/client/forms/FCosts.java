@@ -197,6 +197,7 @@ public class FCosts extends javax.swing.JFrame {
             double other = Double.parseDouble(jTextOther.getText());
             costs.add(new CostItem(CostType.other, other));
             cl.setCosts(costs);
+            cl.setId(drive.getId());
             for(CostItem citem : costs) {
             	citem.setCostList(cl);
             }

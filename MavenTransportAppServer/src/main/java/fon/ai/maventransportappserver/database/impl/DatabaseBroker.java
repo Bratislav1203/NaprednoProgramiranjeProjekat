@@ -165,7 +165,7 @@ public class DatabaseBroker implements IDatabaseBroker {
 		if(entity instanceof Drive) {
 			query = "SELECT d.id, d.date, d.factureprice, d.truck, d.trailer, d.driver, t.loadcapacity AS \"dozvoljena tezina\", tr.productyear AS \"godina kamiona\",\r\n"
 					+ " tr.weight, t.productyear AS \"godina prikolice\", t.weight as \"tezina prikolice\", dr.idcard\r\n"
-					+ "  FROM drive d JOIN vehicle tr ON d.truck = tr.registrationmark JOIN vehicle t ON t.registrationmark = d.trailer JOIN driver dr ON d.driver = dr.idcard ";
+					+ "  FROM drive d JOIN vehicle tr ON d.truck = tr.registrationmark JOIN vehicle t ON t.registrationmark = d.trailer JOIN driver dr ON d.driver = dr.idcard "+ " where " + entity.getSelectContidion();;
 		}
 		System.out.println(query);
 		Statement s = connection.createStatement();
