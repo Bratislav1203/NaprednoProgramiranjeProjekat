@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Klasa koja predstavlja vozaca.
  *
- * @author Vladimir
+ * @author Bratislav
  * @version 1.0
  * @see Driver
  */

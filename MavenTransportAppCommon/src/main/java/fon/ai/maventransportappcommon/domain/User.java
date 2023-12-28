@@ -15,7 +15,7 @@ import java.util.Objects;
  * 
  * Klasa koja predstavlja korisnika.
  *
- * @author Vladimir
+ * @author Bratislav
  * @version 1.0
  * @see User
  */

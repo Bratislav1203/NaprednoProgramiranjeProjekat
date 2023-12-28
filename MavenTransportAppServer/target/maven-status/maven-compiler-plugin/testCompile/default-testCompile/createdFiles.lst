@@ -7,4 +7,5 @@ fon\ai\maventransportappserver\so\impl\SaveDriveOperationTest.class
 fon\ai\maventransportappserver\so\impl\TakeTrailersOperationTest.class
 fon\ai\maventransportappserver\so\impl\TakeTrucksOperationTest.class
 fon\ai\maventransportappserver\so\impl\SaveDriverOperationTest.class
+fon\ai\maventransportappserver\so\impl\DeleteDriveOperationTest.class
 fon\ai\maventransportappserver\so\impl\LoginOperationTest.class

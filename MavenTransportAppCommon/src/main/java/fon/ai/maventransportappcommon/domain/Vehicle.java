@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Klasa koja predstavlja vozilo.
  *
- * @author Vladimir
+ * @author Bratislav
  * @version 1.0
  * @see Vehicle
  */

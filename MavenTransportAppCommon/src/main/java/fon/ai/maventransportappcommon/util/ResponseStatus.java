@@ -9,7 +9,7 @@ package fon.ai.maventransportappcommon.util;
  * Enum u kome su navedene sve konstante operacija koje odredjuju tip
  * uspesnosti klijentskog zahteva i serverskog odgovora.
  *
- * @author Vladimir
+ * @author Bratislav
  * @version 1.0
  */
 public enum ResponseStatus {

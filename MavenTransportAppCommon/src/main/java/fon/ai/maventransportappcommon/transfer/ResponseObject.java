@@ -12,7 +12,7 @@ import fon.ai.maventransportappcommon.util.ResponseStatus;
  * Klasa koja objedinjuje objekte koji se salju kroz mrezu. Serverski odgovor -
  * od servera ka klijentu.
  *
- * @author Vladimir
+ * @author Bratislav
  * @version 1.0
  */
 public class ResponseObject implements Serializable{

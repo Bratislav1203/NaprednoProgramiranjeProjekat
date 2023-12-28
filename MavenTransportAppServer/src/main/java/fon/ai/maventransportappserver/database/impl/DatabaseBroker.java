@@ -150,7 +150,7 @@ public class DatabaseBroker implements IDatabaseBroker {
 	public List<IGeneralEntity> vratiPoUslovu(IGeneralEntity entity) throws Exception {
 		ArrayList<IGeneralEntity> objekti;
 		String query = "select * from " + entity.getTableName() + " where " + entity.getSelectContidion();
-		
+
 		System.out.println(query);
 		Statement s = connection.createStatement();
 		ResultSet rs = s.executeQuery(query);
@@ -171,7 +171,9 @@ public class DatabaseBroker implements IDatabaseBroker {
 		Statement s = connection.createStatement();
 		ResultSet rs = s.executeQuery(query);
 		objekti = (ArrayList<IGeneralEntity>) entity.getList(rs);
-		IGeneralEntity objekat = objekti.get(0);
+		IGeneralEntity objekat = null;
+		if(!objekti.isEmpty())
+			objekat = objekti.get(0);
 		return objekat;
 	}
 
@@ -179,7 +181,7 @@ public class DatabaseBroker implements IDatabaseBroker {
 	public List<IGeneralEntity> vratiSve(IGeneralEntity entity) throws Exception {
 		ArrayList<IGeneralEntity> objekti;
 		String query = "select * from " + entity.getTableName();
-		if(entity instanceof Drive) {
+		if (entity instanceof Drive) {
 			query = "SELECT d.id, d.date, d.factureprice, d.truck, d.trailer, d.driver, t.loadcapacity AS \"dozvoljena tezina\", tr.productyear AS \"godina kamiona\",\r\n"
 					+ " tr.weight, t.productyear AS \"godina prikolice\", t.weight as \"tezina prikolice\", dr.idcard\r\n"
 					+ "  FROM drive d JOIN vehicle tr ON d.truck = tr.registrationmark JOIN vehicle t ON t.registrationmark = d.trailer JOIN driver dr ON d.driver = dr.idcard ";

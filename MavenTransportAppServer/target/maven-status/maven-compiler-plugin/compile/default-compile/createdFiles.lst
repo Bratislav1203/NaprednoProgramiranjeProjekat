@@ -7,8 +7,10 @@ fon\ai\maventransportappserver\so\impl\TakeTrailersOperation.class
 fon\ai\maventransportappserver\util\Constants.class
 fon\ai\maventransportappserver\so\impl\TakeCostsOperation.class
 fon\ai\maventransportappserver\main\Main.class
+fon\ai\maventransportappserver\so\impl\DeleteCostItemOperation.class
 fon\ai\maventransportappserver\server\forms\FConfigurations$4.class
 fon\ai\maventransportappserver\so\impl\TakeDrivesOperation.class
+fon\ai\maventransportappserver\so\impl\UpdateCostItemOperation.class
 fon\ai\maventransportappserver\so\impl\SaveDriverOperation.class
 fon\ai\maventransportappserver\threads\ServerThread.class
 fon\ai\maventransportappserver\server\forms\FConfigurations$2.class
@@ -21,6 +23,7 @@ fon\ai\maventransportappserver\databases\IDatabaseBroker.class
 fon\ai\maventransportappserver\so\impl\SaveDriveOperation.class
 fon\ai\maventransportappserver\so\impl\LoginOperation.class
 fon\ai\maventransportappserver\server\forms\FConfigurations$1.class
+fon\ai\maventransportappserver\so\impl\DeleteCostListOperation.class
 fon\ai\maventransportappserver\so\impl\DeleteDriveOperation.class
 fon\ai\maventransportappserver\server\forms\FConfigurations$3.class
 fon\ai\maventransportappserver\so\impl\TakeDriversOperation.class

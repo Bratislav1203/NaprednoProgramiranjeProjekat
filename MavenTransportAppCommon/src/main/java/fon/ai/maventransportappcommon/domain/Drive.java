@@ -84,14 +84,7 @@ public class Drive implements Serializable, IGeneralEntity {
 
 
 
-	public Drive(int int1, java.sql.Date date, double facturePrice, Trailer trailer, Truck truck, Driver driver) {
-		id = int1;
-		this.date = date;
-		this.facturePrice = facturePrice;
-		this.tr = trailer;
-		this.t = truck;
-		this.d = driver;
-	}
+
 	
 	public Drive(int int1, java.util.Date date, double facturePrice, Trailer trailer, Truck truck, Driver driver) {
 		this.date = date;
@@ -332,7 +325,7 @@ public class Drive implements Serializable, IGeneralEntity {
 	 */
 	@Override
 	public String getSelectContidion() {
-		return "id = '" + getId() + "'";
+		return "d.id = '" + getId() + "'";
 	}
 
 	/**

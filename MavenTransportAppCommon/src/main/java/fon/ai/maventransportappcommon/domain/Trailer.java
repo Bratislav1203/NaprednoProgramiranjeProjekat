@@ -14,7 +14,7 @@ import java.util.List;
 /**
  * Klasa koja predstavlja prikolicu.
  *
- * @author Vladimir
+ * @author Bratislav
  * @version 1.0
  * @see Trailer
  */

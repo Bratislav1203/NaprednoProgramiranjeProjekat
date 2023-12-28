@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * Klasa koja predstavlja kamion.
  *
- * @author Vladimir
+ * @author Bratislav
  * @version 1.0
  * @see Truck
  */

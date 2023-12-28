@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="fon.ai.maventransportappserver.so.impl.SaveDriveOperationTest" time="0.044" tests="3" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="fon.ai.maventransportappserver.so.impl.SaveDriveOperationTest" time="0.045" tests="3" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="17"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -15,7 +15,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="US"/>
     <property name="sun.boot.library.path" value="C:\Users\brati\.p2\pool\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.9.v20231028-0858\jre\bin"/>
-    <property name="sun.java.command" value="C:\Users\brati\AppData\Local\Temp\surefire3991014538355817962\surefirebooter-20231130145409919_3.jar C:\Users\brati\AppData\Local\Temp\surefire3991014538355817962 2023-11-30T14-54-09_765-jvmRun1 surefire-20231130145409919_1tmp surefire_0-20231130145409919_2tmp"/>
+    <property name="sun.java.command" value="C:\Users\brati\AppData\Local\Temp\surefire7613776465496842249\surefirebooter-20231216145750480_3.jar C:\Users\brati\AppData\Local\Temp\surefire7613776465496842249 2023-12-16T14-57-50_375-jvmRun1 surefire-20231216145750480_1tmp surefire_0-20231216145750480_2tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="C:\Users\brati\git\NaprednoProgramiranjeProjekat\MavenTransportAppServer\target\test-classes;C:\Users\brati\git\NaprednoProgramiranjeProjekat\MavenTransportAppServer\target\classes;C:\Users\brati\.m2\repository\mysql\mysql-connector-java\8.0.19\mysql-connector-java-8.0.19.jar;C:\Users\brati\.m2\repository\com\google\protobuf\protobuf-java\3.6.1\protobuf-java-3.6.1.jar;C:\Users\brati\.m2\repository\fon\ai\MavenTransportAppCommon\1.0-SNAPSHOT\MavenTransportAppCommon-1.0-SNAPSHOT.jar;C:\Users\brati\.m2\repository\com\google\code\gson\gson\2.8.6\gson-2.8.6.jar;C:\Users\brati\.m2\repository\junit\junit\4.12\junit-4.12.jar;C:\Users\brati\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -31,7 +31,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\brati\AppData\Local\Temp\surefire3991014538355817962\surefirebooter-20231130145409919_3.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\brati\AppData\Local\Temp\surefire7613776465496842249\surefirebooter-20231216145750480_3.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="17.0.9+9"/>
@@ -60,33 +60,73 @@
   </properties>
   <testcase name="testExecute" classname="fon.ai.maventransportappserver.so.impl.SaveDriveOperationTest" time="0.029">
     <system-out><![CDATA[execute
-insert into drive(id, date, factureprice, truck, trailer, driver) values('0', '2023-11-30', '500.0','RA013CD','AA447RA', '12345678')
+insert into drive(id, date, factureprice, truck, trailer, driver) values('1050', '2023-12-16', '500.0','RA013CD','AA447RA', '12345678')
+Uspesno sam sacuvao u bazi
+insert into costlist(id, total, drive) values('1050', '1200.0', '1050')
+Uspesno sam sacuvao u bazi
+insert into costitem(costList, costtype, amount) values('1050', 'driverSallary', '300.0')
+Uspesno sam sacuvao u bazi
+insert into costitem(costList, costtype, amount) values('1050', 'fuel', '300.0')
+Uspesno sam sacuvao u bazi
+insert into costitem(costList, costtype, amount) values('1050', 'toll', '300.0')
+Uspesno sam sacuvao u bazi
+insert into costitem(costList, costtype, amount) values('1050', 'other', '300.0')
 Uspesno sam sacuvao u bazi
 SELECT d.id, d.date, d.factureprice, d.truck, d.trailer, d.driver, t.loadcapacity AS "dozvoljena tezina", tr.productyear AS "godina kamiona",
  tr.weight, t.productyear AS "godina prikolice", t.weight as "tezina prikolice", dr.idcard
-  FROM drive d JOIN vehicle tr ON d.truck = tr.registrationmark JOIN vehicle t ON t.registrationmark = d.trailer JOIN driver dr ON d.driver = dr.idcard 
+  FROM drive d JOIN vehicle tr ON d.truck = tr.registrationmark JOIN vehicle t ON t.registrationmark = d.trailer JOIN driver dr ON d.driver = dr.idcard  where id = '1050'
 localhost3306transportapprootrootjdbc:mysql://localhost:3306/transportapp
 Successfully connected to database!
 Uspostavljena je konekcija sa bazom
-delete from drive where id=0
+delete from costitem where costlist = '1050' AND costType = 'driversallary'
+Uspostavljena je konekcija sa bazom
+delete from costitem where costlist = '1050' AND costType = 'fuel'
+Uspostavljena je konekcija sa bazom
+delete from costitem where costlist = '1050' AND costType = 'toll'
+Uspostavljena je konekcija sa bazom
+delete from costitem where costlist = '1050' AND costType = 'other'
+Uspostavljena je konekcija sa bazom
+delete from costlist where id=1050
+Uspostavljena je konekcija sa bazom
+delete from drive where id=1050
 COMMIT
 ]]></system-out>
   </testcase>
-  <testcase name="testValidate" classname="fon.ai.maventransportappserver.so.impl.SaveDriveOperationTest" time="0.004">
+  <testcase name="testValidate" classname="fon.ai.maventransportappserver.so.impl.SaveDriveOperationTest" time="0.008">
     <system-out><![CDATA[validate
 localhost3306transportapprootrootjdbc:mysql://localhost:3306/transportapp
 Successfully connected to database!
 Uspostavljena je konekcija sa bazom
-delete from drive where id=0
+delete from costitem where costlist = '1050' AND costType = 'driversallary'
+Uspostavljena je konekcija sa bazom
+delete from costitem where costlist = '1050' AND costType = 'fuel'
+Uspostavljena je konekcija sa bazom
+delete from costitem where costlist = '1050' AND costType = 'toll'
+Uspostavljena je konekcija sa bazom
+delete from costitem where costlist = '1050' AND costType = 'other'
+Uspostavljena je konekcija sa bazom
+delete from costlist where id=1050
+Uspostavljena je konekcija sa bazom
+delete from drive where id=1050
 COMMIT
 ]]></system-out>
   </testcase>
-  <testcase name="testValidate1" classname="fon.ai.maventransportappserver.so.impl.SaveDriveOperationTest" time="0.008">
+  <testcase name="testValidate1" classname="fon.ai.maventransportappserver.so.impl.SaveDriveOperationTest" time="0.007">
     <system-out><![CDATA[validate1
 localhost3306transportapprootrootjdbc:mysql://localhost:3306/transportapp
 Successfully connected to database!
 Uspostavljena je konekcija sa bazom
-delete from drive where id=0
+delete from costitem where costlist = '1050' AND costType = 'driversallary'
+Uspostavljena je konekcija sa bazom
+delete from costitem where costlist = '1050' AND costType = 'fuel'
+Uspostavljena je konekcija sa bazom
+delete from costitem where costlist = '1050' AND costType = 'toll'
+Uspostavljena je konekcija sa bazom
+delete from costitem where costlist = '1050' AND costType = 'other'
+Uspostavljena je konekcija sa bazom
+delete from costlist where id=1050
+Uspostavljena je konekcija sa bazom
+delete from drive where id=1050
 COMMIT
 ]]></system-out>
   </testcase>

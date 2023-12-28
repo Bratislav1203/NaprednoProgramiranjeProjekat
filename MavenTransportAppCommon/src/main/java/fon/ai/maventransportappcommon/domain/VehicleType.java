@@ -2,7 +2,7 @@ package fon.ai.maventransportappcommon.domain;
 /**
  * Enum koji predstavlja vrstu vozila.
  *
- * @author Vladimir
+ * @author Bratislav
  * @version 1.0
  * @see VehicleType
  */

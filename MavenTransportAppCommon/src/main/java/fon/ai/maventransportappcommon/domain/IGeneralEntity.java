@@ -8,7 +8,7 @@ import java.util.List;
  * Interfejs koji sadrzi sve potrebne metode za manipulaciju sa opstim domenskim
  * objektima prilikom rada sa bazom.
  *
- * @author Vladimir
+ * @author Bratislav
  * @version 1.0
  */
 public interface IGeneralEntity extends Serializable{

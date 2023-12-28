@@ -9,7 +9,7 @@ package fon.ai.maventransportappcommon.util;
  * Klasa u kojoj su navedene sve konstante operacija koje odredjuju tip
  * klijentskog zahteva ili serverskog odgovora.
  *
- * @author Vladimir
+ * @author Bratislav
  * @version 1.0
  */
 public class Operation {

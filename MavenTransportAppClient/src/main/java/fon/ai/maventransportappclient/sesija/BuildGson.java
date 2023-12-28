@@ -10,7 +10,7 @@ import com.google.gson.GsonBuilder;
 
 /**
  *
- * @author Vladimir
+ * @author Bratislav
  */
 public class BuildGson {
 

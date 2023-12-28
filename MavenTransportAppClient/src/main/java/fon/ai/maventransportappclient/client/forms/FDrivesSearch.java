@@ -214,12 +214,12 @@ public class FDrivesSearch extends javax.swing.JFrame {
 			ModelDriveSearch mds = (ModelDriveSearch) jTable1.getModel();
 			Drive d = mds.getSelectedRow(row);
 			try {
-				ArrayList<CostItem> troskovi = CommunicationController.getInstance().vratiTroskove();
-				for (CostItem c : troskovi) {
-					if (c.getCostList().getId() == d.getId())
-						CommunicationController.getInstance().deleteCostItem(c);
-				}
-				CommunicationController.getInstance().deleteCostList(d.getCostList());
+//				ArrayList<CostItem> troskovi = CommunicationController.getInstance().vratiTroskove();
+//				for (CostItem c : troskovi) {
+//					if (c.getCostList().getId() == d.getId())
+//						CommunicationController.getInstance().deleteCostItem(c);
+//				}
+//				CommunicationController.getInstance().deleteCostList(d.getCostList());
 				CommunicationController.getInstance().deleteDrive(d);
 				JOptionPane.showMessageDialog(this, "Voznja je uspesno obrisana!");
 				srediTabelu();

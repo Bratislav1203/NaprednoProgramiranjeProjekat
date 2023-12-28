@@ -1,13 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package fon.ai.maventransportappserver.so.impl;
 
 import static org.junit.Assert.assertEquals;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Level;
@@ -28,23 +22,19 @@ import fon.ai.maventransportappcommon.domain.Truck;
 import fon.ai.maventransportappcommon.domain.User;
 import fon.ai.maventransportappcommon.domain.VehicleType;
 import fon.ai.maventransportappserver.so.AbstractGenericOperation;
+import static org.junit.Assert.assertNull;
 
-/**
- *
- * @author stackOverflow
- */
-public class SaveDriveOperationTest {
+public class DeleteDriveOperationTest {
+
 	protected IGeneralEntity entity;
 	protected AbstractGenericOperation so;
 
-	public SaveDriveOperationTest() {
-	}
-
 	@Before
-	public void setUp() throws SQLException {
+	public void setUp() throws Exception {
 		Truck truck = new Truck("AUTOMATIC", "daf", 1995, "RA013CD", 8800, "K");
 		Trailer trailer = new Trailer(VehicleType.CIRADA, 22000, "SMITZ", 1995, "AA447RA", 7500, "P");
-		Driver driver = new Driver(12345678, "Vlada", "Vladic");ArrayList<CostItem> costs = new ArrayList<>();
+		Driver driver = new Driver(12345678, "Vlada", "Vladic");
+		ArrayList<CostItem> costs = new ArrayList<>();
 		CostItem c1 = new CostItem(CostType.driverSallary, 300);
 		CostItem c2 = new CostItem(CostType.fuel, 300);
 		CostItem c3 = new CostItem(CostType.toll, 300);
@@ -53,26 +43,38 @@ public class SaveDriveOperationTest {
 		costs.add(c2);
 		costs.add(c3);
 		costs.add(c4);
-		CostList cl = new CostList(1050);
+		CostList cl = new CostList(2);
 		c1.setCostList(cl);
 		c2.setCostList(cl);
 		c3.setCostList(cl);
 		c4.setCostList(cl);
-		
 		cl.setCosts(costs);
+		entity = new Drive(2, new Date(), 500, trailer, truck, driver, cl);
 		
-		entity = new Drive(1050, new Date(), 500, trailer, truck, driver, cl);
-		cl.setDrive((Drive) entity);
-		Drive d = (Drive) entity;
-		int id = d.getId();
 		
-		so = new SaveDriveOperation();
+		so = new TakeDriveByIDOperation();
 		so.db.openConnection();
+		
+		Drive expected = (Drive) so.db.vratiPoId(entity);
+
+		if (expected == null) {
+			so = new SaveDriveOperation();
+			so.templateExecute((Drive) entity);
+		}
+		so = new DeleteDriveOperation();
+
 	}
 
 	@After
-	public void tearDown() {
-		so = new DeleteDriveOperation();
+	public void tearDown() throws Exception {
+		so.db.openConnection();
+		Drive expected = (Drive) so.db.vratiPoId(entity);
+
+		if (expected != null) {
+			so.db.closeConnection();
+			return;
+		}
+		so = new SaveDriveOperation();
 		try {
 			so.templateExecute(entity);
 		} catch (Exception ex) {
@@ -80,9 +82,6 @@ public class SaveDriveOperationTest {
 		}
 	}
 
-	/**
-	 * Test of validate method, of class SaveDriveOperation.
-	 */
 	@Test
 	public void testValidate() throws Exception {
 		System.out.println("validate");
@@ -100,11 +99,10 @@ public class SaveDriveOperationTest {
 	 */
 	@Test
 	public void testExecute() throws Exception {
-		System.out.println("execute");
-		so.execute(entity);
-		Drive expected = (Drive) so.db.vratiPoId((IGeneralEntity) entity);
-		Drive compare = (Drive) entity;
-		assertEquals(expected.getId(), compare.getId());
+		so.templateExecute(entity);
+
+		Drive deletedDrive = (Drive) so.db.vratiPoId((IGeneralEntity) entity);
+		assertNull("Voznja bi trebalo da je obrisana iz baze", deletedDrive);
 	}
 
 }

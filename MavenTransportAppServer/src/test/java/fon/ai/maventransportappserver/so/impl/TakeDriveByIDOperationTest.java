@@ -1,5 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
+* To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
@@ -8,12 +8,16 @@ package fon.ai.maventransportappserver.so.impl;
 import static org.junit.Assert.assertEquals;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Date;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import fon.ai.maventransportappcommon.domain.CostItem;
+import fon.ai.maventransportappcommon.domain.CostList;
+import fon.ai.maventransportappcommon.domain.CostType;
 import fon.ai.maventransportappcommon.domain.Drive;
 import fon.ai.maventransportappcommon.domain.Driver;
 import fon.ai.maventransportappcommon.domain.IGeneralEntity;
@@ -30,22 +34,50 @@ import fon.ai.maventransportappserver.so.AbstractGenericOperation;
 public class TakeDriveByIDOperationTest {
 	protected IGeneralEntity entity;
 	protected AbstractGenericOperation so;
+	private boolean postojao = true;
 
 	public TakeDriveByIDOperationTest() {
 	}
 
 	@Before
-	public void setUp() throws SQLException {
+	public void setUp() throws Exception {
 		Truck truck = new Truck("AUTOMATIC", "daf", 1995, "RA013CD", 8800, "K");
 		Trailer trailer = new Trailer(VehicleType.CIRADA, 22000, "SMITZ", 1995, "AA447BG", 7500, "P");
 		Driver driver = new Driver(12345678, "Vlada", "Vladic");
 		entity = new Drive(4, new Date(), 500, trailer, truck, driver);
-		so = new TakeDriveByIDOperation();
+
+		ArrayList<CostItem> costs = new ArrayList<>();
+		CostItem c1 = new CostItem(CostType.driverSallary, 300);
+		CostItem c2 = new CostItem(CostType.fuel, 300);
+		CostItem c3 = new CostItem(CostType.toll, 300);
+		CostItem c4 = new CostItem(CostType.other, 300);
+		costs.add(c1);
+		costs.add(c2);
+		costs.add(c3);
+		costs.add(c4);
+		CostList cl = new CostList(150);
+		c1.setCostList(cl);
+		c2.setCostList(cl);
+		c3.setCostList(cl);
+		c4.setCostList(cl);
+		cl.setCosts(costs);
+		entity = new Drive(150, new Date(), 500, trailer, truck, driver, cl);
 		so.db.openConnection();
+		Drive postojeci = (Drive) so.db.vratiPoId(entity);
+		if (postojeci == null) {
+			so = new SaveDriveOperation();
+			so.templateExecute((Drive) entity);
+			postojao = false;
+		}
+		so = new TakeDriveByIDOperation();
 	}
 
 	@After
-	public void tearDown() throws SQLException {
+	public void tearDown() throws Exception {
+		if(postojao == false) {
+			so = new DeleteCostItemOperation();
+			so.templateExecute(entity);
+		}
 		so.db.closeConnection();
 	}
 
@@ -70,6 +102,7 @@ public class TakeDriveByIDOperationTest {
 	@Test
 	public void testExecute() throws Exception {
 		System.out.println("executing");
+
 		Drive expected = (Drive) so.db.vratiPoId(entity);
 		so.execute(entity);
 		Drive rezultat = (Drive) ((TakeDriveByIDOperation) so).getObject();

@@ -11,7 +11,7 @@ import java.io.Serializable;
  * Klasa koja objedinjuje objekte koji se salju kroz mrezu. Zahtev - od klijenta
  * ka serveru.
  *
- * @author Vladimir
+ * @author Bratislav
  * @version 1.0
  */
 public class RequestObject implements Serializable {
