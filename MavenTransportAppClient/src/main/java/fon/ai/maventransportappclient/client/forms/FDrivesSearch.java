@@ -220,6 +220,16 @@ public class FDrivesSearch extends javax.swing.JFrame {
 //						CommunicationController.getInstance().deleteCostItem(c);
 //				}
 //				CommunicationController.getInstance().deleteCostList(d.getCostList());
+				
+				//Punjenje liste troskova
+				List<CostItem> troskovi = CommunicationController.getInstance().vratiTroskove();
+				for(CostItem c : troskovi) {
+					if(d.getCostList().getCosts() == null)
+						d.getCostList().setCosts(new ArrayList<>());
+					if(c.getCostList().getId() == d.getCostList().getId())
+						d.getCostList().getCosts().add(c);
+				}
+				
 				CommunicationController.getInstance().deleteDrive(d);
 				JOptionPane.showMessageDialog(this, "Voznja je uspesno obrisana!");
 				srediTabelu();

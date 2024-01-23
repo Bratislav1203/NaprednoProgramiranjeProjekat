@@ -1,6 +1,6 @@
 /*
-SQLyog Community v13.1.7 (64 bit)
-MySQL - 10.4.27-MariaDB : Database - transportapp
+SQLyog Community v13.2.1 (64 bit)
+MySQL - 10.4.28-MariaDB : Database - transportapp
 *********************************************************************
 */
 
@@ -29,47 +29,11 @@ CREATE TABLE `costitem` (
   KEY `costtype` (`costtype`),
   KEY `foreign` (`costList`),
   CONSTRAINT `costitem_ibfk_1` FOREIGN KEY (`costList`) REFERENCES `costlist` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=85 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=97 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Data for the table `costitem` */
 
 insert  into `costitem`(`id`,`costList`,`costtype`,`amount`) values 
-(29,4,'driverSallary',20),
-(30,4,'fuel',40),
-(31,4,'toll',80),
-(32,4,'other',80),
-(33,2,'driverSallary',40),
-(34,2,'fuel',40),
-(35,2,'toll',40),
-(36,2,'other',40),
-(37,13,'driverSallary',40),
-(38,13,'fuel',40),
-(39,13,'toll',40),
-(40,13,'other',40),
-(45,111,'driverSallary',20),
-(46,111,'fuel',0),
-(47,111,'toll',11),
-(48,111,'other',11),
-(49,93,'driverSallary',20),
-(50,93,'fuel',20),
-(51,93,'toll',20),
-(52,93,'other',20),
-(53,88,'driverSallary',2),
-(54,88,'fuel',2),
-(55,88,'toll',2),
-(56,88,'other',2),
-(57,77,'driverSallary',2),
-(58,77,'fuel',2),
-(59,77,'toll',2),
-(60,77,'other',2),
-(61,66,'driverSallary',1),
-(62,66,'fuel',1),
-(63,66,'toll',1),
-(64,66,'other',1),
-(65,56,'driverSallary',20),
-(66,56,'fuel',20),
-(67,56,'toll',20),
-(68,56,'other',20),
 (69,12345622,'driverSallary',300),
 (70,12345622,'fuel',400),
 (71,12345622,'toll',500),
@@ -99,16 +63,7 @@ CREATE TABLE `costlist` (
 /*Data for the table `costlist` */
 
 insert  into `costlist`(`id`,`total`,`drive`) values 
-(2,100,2),
-(4,200,4),
-(13,100,13),
 (15,1417,15),
-(56,100,56),
-(66,500,66),
-(77,50,77),
-(88,50,88),
-(93,5,93),
-(111,55,111),
 (1203,1850,1203),
 (12345622,55,12345622);
 
@@ -135,16 +90,7 @@ CREATE TABLE `drive` (
 /*Data for the table `drive` */
 
 insert  into `drive`(`id`,`date`,`factureprice`,`truck`,`trailer`,`driver`) values 
-(2,'2020-02-03',60,'RA013CD','AA447BG',12345678),
-(4,'2020-01-01',1800,'RA013CD','AA447BG',12345678),
-(13,'2021-03-20',400,'RA013CD','AA447BG',12345678),
 (15,'2023-05-05',2200,'RA015CC','AA447RA',203023021),
-(56,'2021-01-01',2020,'RA013CD','AA447BG',12345678),
-(66,'2020-01-01',20,'RA013CD','AA447BG',12345678),
-(77,'2020-01-01',20,'RA013CD','AA447BG',12345678),
-(88,'2021-01-01',2,'RA013CD','AA447BG',12345678),
-(93,'2020-02-02',2,'RA013CD','AA447BG',12345678),
-(111,'2020-02-02',2020,'RA013CD','AA447BG',12345678),
 (1203,'2023-10-10',2250,'RA013CD','AA447BG',12345678),
 (12345622,'2012-12-12',5000,'RA013CD','AA447BG',12345678);
 
