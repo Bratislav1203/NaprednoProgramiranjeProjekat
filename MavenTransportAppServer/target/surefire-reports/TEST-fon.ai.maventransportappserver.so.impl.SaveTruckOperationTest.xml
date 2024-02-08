@@ -4,7 +4,7 @@
     <property name="java.specification.version" value="17"/>
     <property name="sun.cpu.isalist" value="amd64"/>
     <property name="sun.jnu.encoding" value="Cp1252"/>
-    <property name="java.class.path" value="C:\Users\brati\git\NaprednoProgramiranjeProjekat\MavenTransportAppServer\target\test-classes;C:\Users\brati\git\NaprednoProgramiranjeProjekat\MavenTransportAppServer\target\classes;C:\Users\brati\.m2\repository\mysql\mysql-connector-java\8.0.19\mysql-connector-java-8.0.19.jar;C:\Users\brati\.m2\repository\com\google\protobuf\protobuf-java\3.6.1\protobuf-java-3.6.1.jar;C:\Users\brati\.m2\repository\fon\ai\MavenTransportAppCommon\1.0-SNAPSHOT\MavenTransportAppCommon-1.0-SNAPSHOT.jar;C:\Users\brati\.m2\repository\com\google\code\gson\gson\2.8.6\gson-2.8.6.jar;C:\Users\brati\.m2\repository\junit\junit\4.12\junit-4.12.jar;C:\Users\brati\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;"/>
+    <property name="java.class.path" value="C:\Users\brati\git\NPProjekat\NaprednoProgramiranjeProjekat\MavenTransportAppServer\target\test-classes;C:\Users\brati\git\NPProjekat\NaprednoProgramiranjeProjekat\MavenTransportAppServer\target\classes;C:\Users\brati\.m2\repository\mysql\mysql-connector-java\8.0.19\mysql-connector-java-8.0.19.jar;C:\Users\brati\.m2\repository\com\google\protobuf\protobuf-java\3.6.1\protobuf-java-3.6.1.jar;C:\Users\brati\.m2\repository\fon\ai\MavenTransportAppCommon\1.0-SNAPSHOT\MavenTransportAppCommon-1.0-SNAPSHOT.jar;C:\Users\brati\.m2\repository\com\google\code\gson\gson\2.8.6\gson-2.8.6.jar;C:\Users\brati\.m2\repository\junit\junit\4.12\junit-4.12.jar;C:\Users\brati\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;"/>
     <property name="java.vm.vendor" value="Eclipse Adoptium"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="user.variant" value=""/>
@@ -15,9 +15,9 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="US"/>
     <property name="sun.boot.library.path" value="C:\Users\brati\.p2\pool\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.9.v20231028-0858\jre\bin"/>
-    <property name="sun.java.command" value="C:\Users\brati\AppData\Local\Temp\surefire7613776465496842249\surefirebooter-20231216145750480_3.jar C:\Users\brati\AppData\Local\Temp\surefire7613776465496842249 2023-12-16T14-57-50_375-jvmRun1 surefire-20231216145750480_1tmp surefire_0-20231216145750480_2tmp"/>
+    <property name="sun.java.command" value="C:\Users\brati\AppData\Local\Temp\surefire5976375727828147727\surefirebooter-20240208114927053_3.jar C:\Users\brati\AppData\Local\Temp\surefire5976375727828147727 2024-02-08T11-49-26_809-jvmRun1 surefire-20240208114927053_1tmp surefire_0-20240208114927053_2tmp"/>
     <property name="jdk.debug" value="release"/>
-    <property name="surefire.test.class.path" value="C:\Users\brati\git\NaprednoProgramiranjeProjekat\MavenTransportAppServer\target\test-classes;C:\Users\brati\git\NaprednoProgramiranjeProjekat\MavenTransportAppServer\target\classes;C:\Users\brati\.m2\repository\mysql\mysql-connector-java\8.0.19\mysql-connector-java-8.0.19.jar;C:\Users\brati\.m2\repository\com\google\protobuf\protobuf-java\3.6.1\protobuf-java-3.6.1.jar;C:\Users\brati\.m2\repository\fon\ai\MavenTransportAppCommon\1.0-SNAPSHOT\MavenTransportAppCommon-1.0-SNAPSHOT.jar;C:\Users\brati\.m2\repository\com\google\code\gson\gson\2.8.6\gson-2.8.6.jar;C:\Users\brati\.m2\repository\junit\junit\4.12\junit-4.12.jar;C:\Users\brati\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;"/>
+    <property name="surefire.test.class.path" value="C:\Users\brati\git\NPProjekat\NaprednoProgramiranjeProjekat\MavenTransportAppServer\target\test-classes;C:\Users\brati\git\NPProjekat\NaprednoProgramiranjeProjekat\MavenTransportAppServer\target\classes;C:\Users\brati\.m2\repository\mysql\mysql-connector-java\8.0.19\mysql-connector-java-8.0.19.jar;C:\Users\brati\.m2\repository\com\google\protobuf\protobuf-java\3.6.1\protobuf-java-3.6.1.jar;C:\Users\brati\.m2\repository\fon\ai\MavenTransportAppCommon\1.0-SNAPSHOT\MavenTransportAppCommon-1.0-SNAPSHOT.jar;C:\Users\brati\.m2\repository\com\google\code\gson\gson\2.8.6\gson-2.8.6.jar;C:\Users\brati\.m2\repository\junit\junit\4.12\junit-4.12.jar;C:\Users\brati\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
     <property name="user.home" value="C:\Users\brati"/>
     <property name="user.language" value="en"/>
@@ -26,12 +26,12 @@
     <property name="java.home" value="C:\Users\brati\.p2\pool\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.9.v20231028-0858\jre"/>
     <property name="file.separator" value="\"/>
     <property name="style.color" value="always"/>
-    <property name="basedir" value="C:\Users\brati\git\NaprednoProgramiranjeProjekat\MavenTransportAppServer"/>
+    <property name="basedir" value="C:\Users\brati\git\NPProjekat\NaprednoProgramiranjeProjekat\MavenTransportAppServer"/>
     <property name="java.vm.compressedOopsMode" value="Zero based"/>
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\brati\AppData\Local\Temp\surefire7613776465496842249\surefirebooter-20231216145750480_3.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\brati\AppData\Local\Temp\surefire5976375727828147727\surefirebooter-20240208114927053_3.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="17.0.9+9"/>
@@ -46,28 +46,28 @@
     <property name="java.vendor.url.bug" value="https://github.com/adoptium/adoptium-support/issues"/>
     <property name="java.io.tmpdir" value="C:\Users\brati\AppData\Local\Temp\"/>
     <property name="java.version" value="17.0.9"/>
-    <property name="user.dir" value="C:\Users\brati\git\NaprednoProgramiranjeProjekat\MavenTransportAppServer"/>
+    <property name="user.dir" value="C:\Users\brati\git\NPProjekat\NaprednoProgramiranjeProjekat\MavenTransportAppServer"/>
     <property name="os.arch" value="amd64"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
     <property name="sun.os.patch.level" value=""/>
     <property name="native.encoding" value="Cp1252"/>
-    <property name="java.library.path" value="C:\Users\brati\.p2\pool\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.9.v20231028-0858\jre\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:/Users/brati/.p2/pool/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.9.v20231028-0858/jre/bin/server;C:/Users/brati/.p2/pool/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.9.v20231028-0858/jre/bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Users\brati\Downloads\apache-maven-3.9.5-bin\apache-maven-3.9.5\bin;C:\Users\brati\.jdks\openjdk-21.0.1\bin;C:\Users\brati\AppData\Local\Microsoft\WindowsApps;;C:\Program Files\JetBrains\IntelliJ IDEA 2023.2.5\bin;;C:\Windows\System32;;."/>
+    <property name="java.library.path" value="C:\Users\brati\.p2\pool\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.9.v20231028-0858\jre\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:/Users/brati/.p2/pool/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.9.v20231028-0858/jre/bin/server;C:/Users/brati/.p2/pool/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.9.v20231028-0858/jre/bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Users\brati\Downloads\apache-maven-3.9.5-bin\apache-maven-3.9.5\bin;C:\Users\brati\.jdks\openjdk-21.0.1\bin;C:\Program Files\nodejs\;c:\Program Files\OpenSSL-Win64\bin;;C:\Program Files\Docker\Docker\resources\bin;C:\Users\brati\AppData\Local\Microsoft\WindowsApps;;C:\Program Files\JetBrains\IntelliJ IDEA 2023.2.5\bin;;C:\Users\brati\AppData\Local\Programs\Microsoft VS Code\bin;C:\xampp\php;C:\Users\brati\AppData\Local\ComposerSetup\bin;C:\Users\brati\AppData\Roaming\Composer\vendor\bin;C:\Users\brati\AppData\Roaming\npm;C:\Windows\System32;;."/>
     <property name="java.vm.info" value="mixed mode"/>
     <property name="java.vendor" value="Eclipse Adoptium"/>
     <property name="java.vm.version" value="17.0.9+9"/>
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="61.0"/>
   </properties>
-  <testcase name="testExecute" classname="fon.ai.maventransportappserver.so.impl.SaveTruckOperationTest" time="0.001">
+  <testcase name="testExecute" classname="fon.ai.maventransportappserver.so.impl.SaveTruckOperationTest" time="0.002">
     <system-out><![CDATA[execute
 select * from vehicle where registrationMark='RA013CG'
 ]]></system-out>
   </testcase>
-  <testcase name="testValidate" classname="fon.ai.maventransportappserver.so.impl.SaveTruckOperationTest" time="0.002">
+  <testcase name="testValidate" classname="fon.ai.maventransportappserver.so.impl.SaveTruckOperationTest" time="0.001">
     <system-out><![CDATA[validate
 ]]></system-out>
   </testcase>
-  <testcase name="testValidate1" classname="fon.ai.maventransportappserver.so.impl.SaveTruckOperationTest" time="0.002">
+  <testcase name="testValidate1" classname="fon.ai.maventransportappserver.so.impl.SaveTruckOperationTest" time="0.001">
     <system-out><![CDATA[validate1
 ]]></system-out>
   </testcase>

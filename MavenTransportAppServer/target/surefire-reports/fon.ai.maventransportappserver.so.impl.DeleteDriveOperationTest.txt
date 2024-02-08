@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: fon.ai.maventransportappserver.so.impl.DeleteDriveOperationTest
 -------------------------------------------------------------------------------
-Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.256 s -- in fon.ai.maventransportappserver.so.impl.DeleteDriveOperationTest
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.659 s -- in fon.ai.maventransportappserver.so.impl.DeleteDriveOperationTest

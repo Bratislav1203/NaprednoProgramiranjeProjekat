@@ -62,6 +62,9 @@ public class TakeDriveByIDOperationTest {
 		c4.setCostList(cl);
 		cl.setCosts(costs);
 		entity = new Drive(150, new Date(), 500, trailer, truck, driver, cl);
+		
+		
+		so = new TakeDriveByIDOperation();
 		so.db.openConnection();
 		Drive postojeci = (Drive) so.db.vratiPoId(entity);
 		if (postojeci == null) {
@@ -70,6 +73,7 @@ public class TakeDriveByIDOperationTest {
 			postojao = false;
 		}
 		so = new TakeDriveByIDOperation();
+		so.db.openConnection();
 	}
 
 	@After
