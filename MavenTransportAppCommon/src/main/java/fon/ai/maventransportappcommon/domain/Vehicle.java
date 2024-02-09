@@ -4,13 +4,14 @@ import java.io.Serializable;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import java.time.Year;
 
 /**
  * Klasa koja predstavlja vozilo.
  *
  * @author Bratislav
  * @version 1.0
- * @see Vehicle
+ *  Vehicle
  */
 public class Vehicle implements Serializable, IGeneralEntity{
     
@@ -48,11 +49,11 @@ public class Vehicle implements Serializable, IGeneralEntity{
      * @param oznakaVozila oznaka koja govori o tipu vozila
      */
     public Vehicle(String brand, int productYear, String registrationMark, double weight, String oznakaVozila) {
-        this.brand = brand;
-        this.productYear = productYear;
-        this.registrationMark = registrationMark;
-        this.weight = weight;
-        this.oznakaVozila = oznakaVozila;
+        setBrand(brand);
+        setProductYear(productYear);
+        setRegistrationMark(registrationMark);
+        setWeight(weight);
+        setOznakaVozila(oznakaVozila);
     }
     
     /**
@@ -63,10 +64,10 @@ public class Vehicle implements Serializable, IGeneralEntity{
      * @param weight tezina
      */
     public Vehicle(String brand, int productYear, String registrationMark, double weight) {
-        this.brand = brand;
-        this.productYear = productYear;
-        this.registrationMark = registrationMark;
-        this.weight = weight;
+        setBrand(brand);
+        setProductYear(productYear);
+        setRegistrationMark(registrationMark);
+        setWeight(weight);
     }
 
     /**
@@ -79,6 +80,132 @@ public class Vehicle implements Serializable, IGeneralEntity{
      *Metoda koja vraca String koji predstavlja naziv relacije u bazi.
      * @return String naziv tabele
      */
+    
+    /**
+     *Metoda koja vraca marku vozila.
+     * @return marka vozila
+     */
+    public String getBrand() {
+        return brand;
+    }
+
+    /**
+     * Postavlja marku vozila nakon provere da uneta vrednost nije prazan string ili null.
+     * Ako je prosleđena marka vozila {@code null} ili prazan string nakon uklanjanja početnih i krajnjih praznih mesta,
+     * baca se {@code IllegalArgumentException} sa porukom da marka ne sme biti prazan string ili null.
+     * 
+     * @param brand marka vozila koja se postavlja.
+     * @throws IllegalArgumentException ako je {@code brand} prazan string ili null.
+     */
+    public void setBrand(String brand) {
+        if (brand == null || brand.trim().isEmpty()) {
+            throw new IllegalArgumentException("Brand ne sme biti prazan string ili null.");
+        }
+        this.brand = brand;
+    }
+
+
+    /**
+     *Metoda koja vraca godinu proizovdnje vozila.
+     * @return godina proizvodnje
+     */
+    public int getProductYear() {
+        return productYear;
+    }
+
+    /**
+     * Postavlja godinu proizvodnje vozila nakon provere da uneta vrednost nije manja od 1951 ili veca od trenutne godine
+     * Ako je prosleđena godina proizvodnje vozila  <= 1950  ili godina proizvodnje > trenutnagodina ,
+     * baca se {@code IllegalArgumentException} sa porukom da godina proizvodnje ne sme biti van dozvoljenih granica
+     * 
+     * @param productYear godina prozivodnje vozila koja se postavlja.
+     * @throws IllegalArgumentException ako je {@code productYear} manja od 1950 ili veca od trenutne godine
+     */
+    public void setProductYear(int productYear) {
+        int currentYear = Year.now().getValue();
+        
+        if (productYear <= 1950 || productYear > currentYear) {
+            throw new IllegalArgumentException("Godina proizvodnje mora biti između 1951 i " + currentYear + ".");
+        }
+        
+        this.productYear = productYear;
+    }
+
+
+    /**
+     *Metoda koja vraca registracije vozila.
+     * @return registracije
+     */
+    public String getRegistrationMark() {
+        return registrationMark;
+    }
+
+    /**
+     * Postavlja marku vozila nakon provere da uneta vrednost nije prazan string ili null.
+     * Ako je prosleđena registracija vozila {@code null} ili prazan string nakon uklanjanja početnih i krajnjih praznih mesta,
+     * baca se {@code IllegalArgumentException} sa porukom da registracija ne sme biti prazan string ili null.
+     * 
+     * @param registracija vozila koja se postavlja.
+     * @throws IllegalArgumentException ako je {@code registrationMark} prazan string ili null.
+     */
+    public void setRegistrationMark(String registrationMark) {
+   	 if (registrationMark == null || registrationMark.trim().isEmpty()) {
+         throw new IllegalArgumentException("Registratice ne smeju biti prazan string ili null.");
+     }
+        this.registrationMark = registrationMark;
+    }
+
+    /**
+     *Metoda koja vraca tezinu vozila.
+     * @return tezina
+     */
+    public double getWeight() {
+        return weight;
+    }
+
+    /**
+     * Postavlja tezinu vozila nakon provere da uneta vrednost nije manja od 0
+     * Ako je prosleđena tezina vozila  <= 0 ,
+     * baca se {@code IllegalArgumentException} sa porukom da tezina ne sme biti manja od 0
+     * 
+     * @param tezina vozila koja se postavlja.
+     * @throws IllegalArgumentException ako je {@code brand} prazan string ili null.
+     */
+    public void setWeight(double weight) {
+    	if (weight <= 0) {
+            throw new IllegalArgumentException("Tezina mora biti veća od 0.");
+        }
+        this.weight = weight;
+    }
+
+    /**
+     *Metoda koja daje ispis atributa objekta klase Vozilo.
+     * @return ispis
+     */
+    @Override
+    public String toString() {
+        return brand + " - " + productYear;
+    }
+
+    /**
+     *Metoda koja vraca oznaku vozila.
+     * @return oznaka vozila
+     */
+    public String getOznakaVozila() {
+        return oznakaVozila;
+    }
+
+    /**
+     *Metoda koja postavlja oznaku vozila.
+     * @param oznakaVozila oznaka vozila
+     */
+    public void setOznakaVozila(String oznakaVozila) {
+        this.oznakaVozila = oznakaVozila;
+    }
+    
+    
+    
+    
     @Override
     public String getTableName() {
         return "vehicle";
@@ -157,95 +284,6 @@ public class Vehicle implements Serializable, IGeneralEntity{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    /**
-     *Metoda koja vraca marku vozila.
-     * @return marka vozila
-     */
-    public String getBrand() {
-        return brand;
-    }
-
-    /**
-     *Metoda koja postavlja marku vozila.
-     * @param brand marka vozila
-     */
-    public void setBrand(String brand) {
-        this.brand = brand;
-    }
-
-    /**
-     *Metoda koja vraca godinu proizovdnje vozila.
-     * @return godina proizvodnje
-     */
-    public int getProductYear() {
-        return productYear;
-    }
-
-    /**
-     *Metoda koja postavlja godinu proizvodnje.
-     * @param productYear godina proizvodnje
-     */
-    public void setProductYear(int productYear) {
-        this.productYear = productYear;
-    }
-
-    /**
-     *Metoda koja vraca registracije vozila.
-     * @return registracije
-     */
-    public String getRegistrationMark() {
-        return registrationMark;
-    }
-
-    /**
-     *Metoda koja postavlja registracije vozilu.
-     * @param registrationMark registracije
-     */
-    public void setRegistrationMark(String registrationMark) {
-        this.registrationMark = registrationMark;
-    }
-
-    /**
-     *Metoda koja vraca tezinu vozila.
-     * @return tezina
-     */
-    public double getWeight() {
-        return weight;
-    }
-
-    /**
-     *Metoda koja postavlja tezinu vozila
-     * @param weight tezina
-     */
-    public void setWeight(double weight) {
-        this.weight = weight;
-    }
-
-    /**
-     *Metoda koja daje ispis atributa objekta klase Vozilo.
-     * @return ispis
-     */
-    @Override
-    public String toString() {
-        return brand + " - " + productYear;
-    }
-
-    /**
-     *Metoda koja vraca oznaku vozila.
-     * @return oznaka vozila
-     */
-    public String getOznakaVozila() {
-        return oznakaVozila;
-    }
-
-    /**
-     *Metoda koja postavlja oznaku vozila.
-     * @param oznakaVozila oznaka vozila
-     */
-    public void setOznakaVozila(String oznakaVozila) {
-        this.oznakaVozila = oznakaVozila;
-    }
-    
-    
+  
     
 }

@@ -16,7 +16,7 @@ import java.util.List;
  *
  * @author Bratislav
  * @version 1.0
- * @see Trailer
+ *  Trailer
  */
 public class Trailer extends Vehicle implements Serializable, IGeneralEntity{
 
@@ -43,8 +43,8 @@ public class Trailer extends Vehicle implements Serializable, IGeneralEntity{
      * @param loadCapacity nosivost
      */
     public Trailer(VehicleType vt, double loadCapacity) {
-        this.vt = vt;
-        this.loadCapacity = loadCapacity;
+        setVt(vt);
+        setLoadCapacity(loadCapacity);
     }
 
     /**
@@ -59,8 +59,8 @@ public class Trailer extends Vehicle implements Serializable, IGeneralEntity{
      */
     public Trailer(VehicleType vt, double loadCapacity, String brand, int productYear, String registrationMark, double weight, String oznakaVozila) {
         super(brand, productYear, registrationMark, weight, oznakaVozila);
-        this.vt = vt;
-        this.loadCapacity = loadCapacity;
+        setVt(vt);
+        setLoadCapacity(loadCapacity);
     }
 
     /**
@@ -88,12 +88,23 @@ public class Trailer extends Vehicle implements Serializable, IGeneralEntity{
     }
 
     /**
-     *Metoda koja postavlja novu nosivost prikolice
-     * @param loadCapacity nosivost
+     * Postavlja nosivost prikolice nakon provere da je uneta vrednost pozitivna.
+     * Ovo osigurava da prikolica ima validnu nosivost koja je ključna za sigurno
+     * i efikasno korišćenje. Nosivost mora biti veća od 0 kako bi prikolica bila
+     * funkcionalna i u skladu sa tehničkim specifikacijama i sigurnosnim standardima.
+     * Ako je prosleđena nosivost manja ili jednaka 0, baca se
+     * {@code IllegalArgumentException} sa odgovarajućom porukom.
+     * 
+     * @param loadCapacity nosivost prikolice koja se postavlja.
+     * @throws IllegalArgumentException ako je {@code loadCapacity} manji ili jednak 0.
      */
     public void setLoadCapacity(double loadCapacity) {
+        if (loadCapacity <= 0) {
+            throw new IllegalArgumentException("Nosivost mora biti veći od 0.");
+        }
         this.loadCapacity = loadCapacity;
     }
+
 
     /**
      *Metoda koja vraca String koji predstavlja naziv relacije u bazi.

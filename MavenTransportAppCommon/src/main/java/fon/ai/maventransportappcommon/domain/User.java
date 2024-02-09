@@ -10,6 +10,9 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
+
 
 /**
  * 
@@ -17,7 +20,7 @@ import java.util.Objects;
  *
  * @author Bratislav
  * @version 1.0
- * @see User
+ *  User
  */
 public class User implements IGeneralEntity{
 
@@ -67,12 +70,12 @@ public class User implements IGeneralEntity{
      * @param email email korisnika
      */
     public User(long userID, String username, String password, String name, String surname, String email) {
-        this.userID = userID;
-        this.username = username;
-        this.password = password;
-        this.name = name;
-        this.surname = surname;
-        this.email = email;
+        setUserID(userID);
+        setUsername(username);
+        setPassword(password);
+        setName(name);
+        setSurname(surname);
+        setEmail(email);
     }
 
     /**
@@ -84,10 +87,18 @@ public class User implements IGeneralEntity{
     }
 
     /**
-     *Metoda koja postavlja identifikacioni broj konkretnom Korisniku.
-     * @param userID identifikacioni broj
+     * Postavlja identifikacioni broj korisniku nakon provere da je uneti identifikacioni broj pozitivan.
+     * Ako je prosleđeni identifikacioni broj manji ili jednak 0, baca se {@code IllegalArgumentException}
+     * sa porukom da identifikacioni broj mora biti veći od 0. Ovo osigurava da svaki korisnik ima validan,
+     * pozitivan identifikacioni broj.
+     * 
+     * @param userID identifikacioni broj koji se postavlja korisniku.
+     * @throws IllegalArgumentException ako je {@code userID} manji ili jednak 0.
      */
     public void setUserID(long userID) {
+    	if (userID <= 0) {
+            throw new IllegalArgumentException("ID mora biti veći od 0.");
+        }
         this.userID = userID;
     }
 
@@ -100,12 +111,21 @@ public class User implements IGeneralEntity{
     }
 
     /**
-     *Metoda koja postavlja korisnicko ime.
-     * @param username korisnicko ime
+     * Postavlja korisničko ime korisniku nakon provere da uneta vrednost nije prazan string ili null.
+     * Korisničko ime je osnovni identifikator za korisnika i ne sme biti ostavljeno neodređeno.
+     * Ako je prosleđeno korisničko ime {@code null} ili prazan string nakon uklanjanja početnih i krajnjih praznih mesta,
+     * baca se {@code IllegalArgumentException} sa porukom da korisničko ime ne sme biti prazan string ili null.
+     * 
+     * @param username korisničko ime koje se postavlja.
+     * @throws IllegalArgumentException ako je {@code username} prazan string ili null.
      */
     public void setUsername(String username) {
+        if (username == null || username.trim().isEmpty()) {
+            throw new IllegalArgumentException("Username ne sme biti prazan string ili null.");
+        }
         this.username = username;
     }
+
 
     /**
      *Metoda koja vraca sifru korisnika.
@@ -116,12 +136,21 @@ public class User implements IGeneralEntity{
     }
 
     /**
-     *Metoda koja postavlja sifru korisniku.
-     * @param password sifra korisnika
+     * Postavlja šifru korisniku nakon provere da uneta vrednost nije prazan string ili null.
+     * Šifra je ključna za zaštitu pristupa korisničkom nalogu i mora biti definisana.
+     * Ako je prosleđena šifra {@code null} ili prazan string nakon uklanjanja početnih i krajnjih praznih mesta,
+     * baca se {@code IllegalArgumentException} sa porukom da šifra ne sme biti prazan string ili null.
+     * 
+     * @param password šifra koja se postavlja korisniku.
+     * @throws IllegalArgumentException ako je {@code password} prazan string ili null.
      */
     public void setPassword(String password) {
+        if (password == null || password.trim().isEmpty()) {
+            throw new IllegalArgumentException("Password ne sme biti prazan string ili null.");
+        }
         this.password = password;
     }
+
 
     /**
      *Metoda koja vraca ime korisnika.
@@ -132,10 +161,20 @@ public class User implements IGeneralEntity{
     }
 
     /**
-     *Metoda koja postavlja ime korisniku.
-     * @param name ime
+     * Postavlja ime korisniku nakon provere da uneta vrednost nije prazan string ili null
+     * i da ime sadrži samo slova i ima minimalnu dužinu od 2 karaktera. Ovo osigurava da ime
+     * korisnika zadovoljava osnovne kriterijume formata i dužine.
+     * 
+     * @param name ime korisnika koje se postavlja.
+     * @throws IllegalArgumentException ako ime ne zadovoljava kriterijume validnosti.
      */
     public void setName(String name) {
+	   	 if (name == null || name.trim().isEmpty()) {
+	         throw new IllegalArgumentException("Ime ne sme biti prazan string ili null.");
+	     }
+	     if (!name.matches("[a-zA-Z ]+") || name.length() < 2) {
+	         throw new IllegalArgumentException("Ime mora sadržati samo slova i imati minimalnu dužinu od 2 karaktera.");
+	     }
         this.name = name;
     }
 
@@ -148,12 +187,23 @@ public class User implements IGeneralEntity{
     }
 
     /**
-     *Metoda koja postavlja prezime korisniku.
-     * @param surname prezime
+     * Postavlja prezime korisniku nakon provere da uneta vrednost nije prazan string ili null
+     * i da prezime sadrži samo slova i ima minimalnu dužinu od 2 karaktera. Ovo osigurava da prezime
+     * korisnika zadovoljava osnovne kriterijume formata i dužine.
+     * 
+     * @param surname prezime korisnika koje se postavlja.
+     * @throws IllegalArgumentException ako prezime ne zadovoljava kriterijume validnosti.
      */
     public void setSurname(String surname) {
+        if (surname == null || surname.trim().isEmpty()) {
+            throw new IllegalArgumentException("Prezime ne sme biti prazan string ili null.");
+        }
+        if (!surname.matches("[a-zA-Z ]+") || surname.length() < 2) {
+            throw new IllegalArgumentException("Prezime mora sadržati samo slova i imati minimalnu dužinu od 2 karaktera.");
+        }
         this.surname = surname;
     }
+
 
     /**
      *Metoda koja vraca email korisnika.
@@ -164,13 +214,41 @@ public class User implements IGeneralEntity{
     }
 
     /**
-     *Metoda koja postavlja korisnikov email.
-     * @param email korisnikov email
+     * Postavlja email adresu korisniku nakon provere da uneta email adresa ima validan format.
+     * Ovo osigurava da je email adresa korisnika u formatu koji je prihvatljiv i može biti korišćen
+     * za komunikaciju.
+     * 
+     * @param email email adresa korisnika koja se postavlja.
+     * @throws IllegalArgumentException ako email adresa nije u validnom formatu.
      */
     public void setEmail(String email) {
+        if (!isEmailValid(email)) {
+            throw new IllegalArgumentException("Email adresa nije u validnom formatu.");
+        }
         this.email = email;
     }
 
+
+    /**
+     * Proverava da li je data email adresa u validnom formatu.
+     * 
+     * @param email email adresa koja se proverava.
+     * @return true ako je email validan, u suprotnom false
+     */
+    public boolean isEmailValid(String email) {
+        // Definisanje regex paterna za validaciju email adrese
+        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
+
+        Pattern pattern = Pattern.compile(emailRegex);
+        if (email == null) {
+            return false;
+        }
+        Matcher matcher = pattern.matcher(email);
+        return matcher.matches();
+    }
+
+    
+    
     /**
      *Metoda koja sluzi za poredjenje korisnika.
      * @param obj opsti objekat

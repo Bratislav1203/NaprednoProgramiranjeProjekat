@@ -9,7 +9,7 @@ import java.util.List;
  *
  * @author Bratislav
  * @version 1.0
- * @see Driver
+ *  Driver
  */
 
 public class Driver implements IGeneralEntity{
@@ -42,9 +42,9 @@ public class Driver implements IGeneralEntity{
      * @param surname prezime
      */
     public Driver(int IDCard, String name, String surname) {
-        this.IDCard = IDCard;
-        this.name = name;
-        this.surname = surname;
+        setIDCard(IDCard);
+        setName(name);
+        setSurname(surname);
     }
 
     /**
@@ -56,12 +56,22 @@ public class Driver implements IGeneralEntity{
     }
 
     /**
-     *Metoda koja postavlja broj licne karte.
-     * @param IDCard licna karta
+     * Postavlja broj lične karte vozaču nakon provere da je uneti broj pozitivan
+     * i da tačno sadrži 9 cifara. Ovo osigurava da broj lične karte zadovoljava
+     * osnovne formate identifikacionih dokumenata.
+     * 
+     * @param IDCard broj lične karte koji se postavlja.
+     * @throws IllegalArgumentException ako broj lične karte nije pozitivan ili nema tačno 9 cifara.
      */
     public void setIDCard(int IDCard) {
+        int length = String.valueOf(IDCard).length();
+        if (IDCard <= 0 || length != 9) {
+            throw new IllegalArgumentException("IDCard mora biti pozitivan broj sa tačno 9 cifara.");
+        }
         this.IDCard = IDCard;
     }
+
+
 
     /**
      *Metoda koja vraca ime vozaca.
@@ -72,12 +82,24 @@ public class Driver implements IGeneralEntity{
     }
 
     /**
-     *Metoda koja postavlja ime vozacu.
-     * @param name ime
+     * Postavlja ime vozaču nakon provere da uneta vrednost nije prazan string ili null
+     * i da ime sadrži samo slova te ima minimalnu dužinu od 2 karaktera. Ovo osigurava
+     * da ime vozača zadovoljava osnovne kriterijume formata i dužine.
+     * 
+     * @param name ime vozača koje se postavlja.
+     * @throws IllegalArgumentException ako ime ne zadovoljava kriterijume validnosti.
      */
     public void setName(String name) {
+        if (name == null || name.trim().isEmpty()) {
+            throw new IllegalArgumentException("Ime ne sme biti prazan string ili null.");
+        }
+        if (!name.matches("[a-zA-Z ]+") || name.length() < 2) {
+            throw new IllegalArgumentException("Ime mora sadržati samo slova i imati minimalnu dužinu od 2 karaktera.");
+        }
         this.name = name;
     }
+
+
 
     /**
      *Metoda koja vraca prezime vozaca.
@@ -88,12 +110,24 @@ public class Driver implements IGeneralEntity{
     }
 
     /**
-     *Metoda koja postavlja prezime vozacu.
-     * @param surname prezime
+     * Postavlja prezime vozaču nakon provere da uneta vrednost nije prazan string ili null
+     * i da prezime sadrži samo slova te ima minimalnu dužinu od 2 karaktera. Ovo osigurava
+     * da prezime vozača zadovoljava osnovne kriterijume formata i dužine.
+     * 
+     * @param surname prezime vozača koje se postavlja.
+     * @throws IllegalArgumentException ako prezime ne zadovoljava kriterijume validnosti.
      */
     public void setSurname(String surname) {
+        if (surname == null || surname.trim().isEmpty()) {
+            throw new IllegalArgumentException("Prezime ne sme biti prazan string ili null.");
+        }
+        if (!surname.matches("[a-zA-Z ]+") || surname.length() < 2) {
+            throw new IllegalArgumentException("Prezime mora sadržati samo slova i imati minimalnu dužinu od 2 karaktera.");
+        }
+
         this.surname = surname;
     }
+    
     /**
      *Metoda koja vraca String koji predstavlja naziv relacije u bazi.
      * @return String naziv tabele

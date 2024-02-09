@@ -17,7 +17,7 @@ import java.util.List;
  *
  * @author Bratislav
  * @version 1.0
- * @see Drive
+ *  Drive
  */
 public class Drive implements Serializable, IGeneralEntity {
 
@@ -62,6 +62,26 @@ public class Drive implements Serializable, IGeneralEntity {
 	 */
 	public Drive() {
 	}
+	
+	/**
+	 * Parametrizovani konstruktor klase Drive.
+	 * 
+	 * @param date         	datum
+	 * @param facturePrice 	iznos fakture
+	 * @param trailer		prikolica
+	 * @param truck	    	kamion
+	 * @param driver       	vozac
+	 * @param costList      lista troskova
+	 */
+	public Drive(int cmrNumber, Date date, double facturePrice, Trailer trailer, Truck truck, Driver driver, CostList costList) {
+		setId(cmrNumber);
+		setDate(date);
+		setFacturePrice(facturePrice);
+		setT(truck);
+		setTr(trailer);
+		setD(driver);
+		setCostList(costList);
+	}
 
 	/**
 	 * Parametrizovani konstruktor klase Drive.
@@ -74,35 +94,35 @@ public class Drive implements Serializable, IGeneralEntity {
 	 * @param d            	vozac
 	 */
 	public Drive(CostList costList, Date date, double facturePrice, Trailer tr, Truck t, Driver d) {
-		this.costList = costList;
-		this.date = date;
-		this.facturePrice = facturePrice;
-		this.tr = tr;
-		this.t = t;
-		this.d = d;
+		setDate(date);
+		setFacturePrice(facturePrice);
+		setT(t);
+		setTr(tr);
+		setD(d);
+		setCostList(costList);
 	}
 
 
 
 
-	
+	/**
+	 * Parametrizovani konstruktor klase Drive.
+	 * 
+	 * @param date         	datum
+	 * @param facturePrice 	iznos fakture
+	 * @param trailer		prikolica
+	 * @param truck	    	kamion
+	 * @param driver       	vozac
+	 */
 	public Drive(int int1, java.util.Date date, double facturePrice, Trailer trailer, Truck truck, Driver driver) {
-		this.date = date;
-		this.facturePrice = facturePrice;
-		this.tr = trailer;
-		this.t = truck;
-		this.d = driver;
+		setDate(date);
+		setFacturePrice(facturePrice);
+		setT(truck);
+		setTr(trailer);
+		setD(driver);
 	}
 
-	public Drive(int cmrNumber, Date date2, double facturePrice2, Trailer tr2, Truck t2, Driver d2, CostList cl) {
-		id = cmrNumber;
-		date = date2;
-		facturePrice = facturePrice2;
-		tr = tr2;
-		t = t2;
-		d = d2;
-		costList = cl;
-	}
+
 
 	/**
 	 * Metoda koja vraca vozaca sa konkretne voznje.
@@ -112,13 +132,20 @@ public class Drive implements Serializable, IGeneralEntity {
 	public Driver getD() {
 		return d;
 	}
-
+	
 	/**
-	 * Metoda koja postavlja vozaca na konkretnoj voznji.
+	 * Postavlja vozača za konkretnu vožnju nakon provere da vozač nije {@code null}.
+	 * Ovo osigurava da svaka vožnja ima dodeljenog vozača pre nego što se izvrši,
+	 * što je ključni element za uspešno realizovanje vožnje.
 	 * 
-	 * @param d vozac
+	 * @param d vozač koji se dodeljuje vožnji.
+	 * @throws IllegalArgumentException ako je {@code d} null, što ukazuje da vozač
+	 * nije određen za vožnju.
 	 */
 	public void setD(Driver d) {
+		if (d == null) {
+	        throw new IllegalArgumentException("Vozac ne sme biti null.");
+	    }
 		this.d = d;
 	}
 
@@ -132,12 +159,19 @@ public class Drive implements Serializable, IGeneralEntity {
 	}
 
 	/**
-	 * Metoda koja postavlja troskove sa konkretne voznje.
+	 * Postavlja listu troškova za konkretnu vožnju nakon provere da lista troškova nije {@code null}.
+	 * Ovo omogućava precizno praćenje i upravljanje troškovima povezanim sa svakom vožnjom,
+	 * čime se doprinosi efikasnom upravljanju finansijama.
 	 * 
-	 * @param cost troskovi
+	 * @param costList lista troškova koja se dodeljuje vožnji.
+	 * @throws IllegalArgumentException ako je {@code costList} null, što ukazuje na nedostatak
+	 * definisanih troškova za vožnju.
 	 */
-	public void setCostList(CostList cost) {
-		this.costList = cost;
+	public void setCostList(CostList costList) {
+		if (costList == null) {
+	        throw new IllegalArgumentException("Lista troskova ne sme biti null.");
+	    }
+		this.costList = costList;
 	}
 
 	/**
@@ -150,11 +184,18 @@ public class Drive implements Serializable, IGeneralEntity {
 	}
 
 	/**
-	 * Metoda koja postavlja datum konkretne voznje.
+	 * Postavlja datum konkretne vožnje nakon provere da uneti datum nije u budućnosti.
+	 * Ova provera osigurava da datum vožnje odgovara realnom vremenskom periodu i sprečava
+	 * unos datuma koji još nisu nastupili. Ako je prosleđeni datum u budućnosti, baca se
+	 * {@code IllegalArgumentException} sa odgovarajućom porukom.
 	 * 
-	 * @param date datum
+	 * @param date datum vožnje koji se postavlja.
+	 * @throws IllegalArgumentException ako je {@code date} datum u budućnosti.
 	 */
 	public void setDate(Date date) {
+		 if (date.after(new Date())) {
+		        throw new IllegalArgumentException("Datum mora biti u prošlosti.");
+		    }
 		this.date = date;
 	}
 
@@ -168,11 +209,18 @@ public class Drive implements Serializable, IGeneralEntity {
 	}
 
 	/**
-	 * Metoda koja postavlja iznos fakture na novi iznos.
+	 * Postavlja iznos fakture na novi iznos nakon provere da je uneti iznos pozitivan.
+	 * Ovo osigurava da iznos fakture odražava stvarnu vrednost i sprečava unos negativnih
+	 * ili nultih vrednosti koje nisu validne u kontekstu fakturisanja.
 	 * 
-	 * @param facturePrice iznos fakture
+	 * @param facturePrice novi iznos fakture koji se postavlja.
+	 * @throws IllegalArgumentException ako je {@code facturePrice} manji ili jednak 0,
+	 * što ukazuje na nevalidan iznos fakture.
 	 */
 	public void setFacturePrice(double facturePrice) {
+		if (facturePrice <= 0) {
+	        throw new IllegalArgumentException("Iznos fakture mora biti veći od 0.");
+	    }
 		this.facturePrice = facturePrice;
 	}
 
@@ -186,11 +234,18 @@ public class Drive implements Serializable, IGeneralEntity {
 	}
 
 	/**
-	 * Metoda koja postavlja prikolicu za konkretnu voznju.
+	 * Postavlja prikolicu za konkretnu vožnju nakon provere da prikolica nije {@code null}.
+	 * Ovo omogućava da vožnja uključuje prikolicu kad je to potrebno, osiguravajući
+	 * kompletiranje svih elemenata vožnje pre njenog izvršavanja.
 	 * 
-	 * @param tr prikolica
+	 * @param tr prikolica koja se dodeljuje vožnji.
+	 * @throws IllegalArgumentException ako je {@code tr} null, što ukazuje da prikolica
+	 * nije određena za vožnju.
 	 */
 	public void setTr(Trailer tr) {
+		if (tr == null) {
+	        throw new IllegalArgumentException("Prikolica ne sme biti null.");
+	    }
 		this.tr = tr;
 	}
 
@@ -204,11 +259,18 @@ public class Drive implements Serializable, IGeneralEntity {
 	}
 
 	/**
-	 * Metoda koja postavlja kamion za odredjenu voznju.
+	 * Postavlja kamion za određenu vožnju nakon provere da kamion nije {@code null}.
+	 * Ovo osigurava da svaka vožnja ima dodeljen kamion pre nego što se izvrši,
+	 * sprečavajući time vožnju bez odgovarajućeg vozila.
 	 * 
-	 * @param t kamion
+	 * @param t kamion koji se dodeljuje vožnji.
+	 * @throws IllegalArgumentException ako je {@code t} null, što ukazuje da kamion
+	 * nije određen za vožnju.
 	 */
 	public void setT(Truck t) {
+		if (t == null) {
+	        throw new IllegalArgumentException("Kamion ne sme biti null.");
+	    }
 		this.t = t;
 	}
 
@@ -338,12 +400,19 @@ public class Drive implements Serializable, IGeneralEntity {
 	}
 
 	/**
-	 * Metoda koja postavlja odredjeni identifikacioni broj voznje.
+	 * Postavlja određeni identifikacioni broj vožnje nakon provere da je uneti broj pozitivan.
+	 * Ovo osigurava da svaka vožnja ima jedinstveni i validan identifikacioni broj veći od 0.
+	 * Ako je prosleđeni identifikacioni broj manji ili jednak 0, baca se
+	 * {@code IllegalArgumentException} sa odgovarajućom porukom da ID mora biti veći od 0.
 	 * 
-	 * @param id identifikacioni broj
+	 * @param id identifikacioni broj vožnje koji se postavlja.
+	 * @throws IllegalArgumentException ako je {@code id} manji ili jednak 0.
 	 */
 	public void setId(int id) {
-		this.id = id;
+		if (id <= 0) {
+	        throw new IllegalArgumentException("ID mora biti veći od 0.");
+	    }
+	    this.id = id;
 	}
 
 	

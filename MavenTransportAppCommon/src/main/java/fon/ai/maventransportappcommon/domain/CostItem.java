@@ -17,7 +17,7 @@ import java.util.List;
  *
  * @author Bratislav
  * @version 1.0
- * @see CostItem
+ *  CostItem
  */
 public class CostItem implements Serializable, IGeneralEntity {
 
@@ -47,10 +47,9 @@ public class CostItem implements Serializable, IGeneralEntity {
 	 * @param amount   iznos
 	 */
 	public CostItem(CostType costType, double amount, CostList costList) {
-		this.costType = costType;
-		this.amount = amount;
-		this.costList = costList;
-
+		setCostType(costType);
+		setAmount(amount);
+		setCostList(costList);
 	}
 
 	/**
@@ -66,8 +65,8 @@ public class CostItem implements Serializable, IGeneralEntity {
 	 * @param amount   iznos
 	 */
 	public CostItem(CostType costType, double amount) {
-		this.costType = costType;
-		this.amount = amount;
+		setCostType(costType);
+		setAmount(amount);
 	}
 
 	/**
@@ -80,14 +79,105 @@ public class CostItem implements Serializable, IGeneralEntity {
 		return "costitem";
 	}
 
+	/**
+	 * Metoda koja vraca listu troskova.
+	 * 
+	 * @return costList lista troskova
+	 */
 	public CostList getCostList() {
 		return costList;
 	}
 
+	/**
+	 * Postavlja listu troškova. Lista troškova je ključna za praćenje i upravljanje
+	 * svim troškovima povezanim sa specifičnim entitetom ili aktivnošću. Proverava se
+	 * da lista troškova nije {@code null} kako bi se osiguralo da je svaki entitet
+	 * ili aktivnost pravilno povezan(a) sa svojom listom troškova. Ova provera je važna
+	 * za održavanje integriteta podataka unutar sistema.
+	 * 
+	 * @param costList lista troškova koja se postavlja.
+	 * @throws IllegalArgumentException ako je {@code costList} null, što ukazuje
+	 * na pokušaj disasocijacije entiteta ili aktivnosti od svih troškova.
+	 */
 	public void setCostList(CostList costList) {
+		if (costList == null) {
+	        throw new IllegalArgumentException("CostList ne sme biti null");
+	    }
 		this.costList = costList;
 	}
+	/**
+	 * Metoda koja vraca id troska.
+	 * 
+	 * @return id troska
+	 */
+	public int getId() {
+		return id;
+	}
 
+	/**
+	 * Postavlja identifikacioni broj (ID) troška, osiguravajući da svaki trošak ima
+	 * svoj jedinstveni identifikator. ID troška mora biti pozitivan broj veći od 0,
+	 * što omogućava jednoznačnu identifikaciju troškova unutar sistema. Provera validnosti
+	 * ID-a je ključna za održavanje integriteta baze podataka i sprečavanje grešaka u obradi podataka.
+	 * 
+	 * @param id identifikacioni broj troška koji se postavlja.
+	 * @throws IllegalArgumentException ako je prosleđeni ID manji ili jednak 0,
+	 * što ukazuje na nevalidan ID troška.
+	 */
+	public void setId(int id) {
+	    if (id <= 0) {
+	        throw new IllegalArgumentException("ID mora biti veći od 0.");
+	    }
+	    this.id = id;
+	}
+
+
+	/**
+	 * Metoda koja vraca tip troska.
+	 * 
+	 * @return tip troska
+	 */
+	public CostType getCostType() {
+		return costType;
+	}
+
+	/**
+	 * Metoda koja postavlja tip troska.
+	 * 
+	 * @param costType tip troska
+	 */
+	public void setCostType(CostType costType) {
+		this.costType = costType;
+	}
+
+	/**
+	 * Metoda koja vraca iznos troska.
+	 * 
+	 * @return iznos troska
+	 */
+	public double getAmount() {
+		return amount;
+	}
+
+	/**
+	 * Postavlja iznos troška, osiguravajući da je uneti iznos pozitivan.
+	 * Ovaj zahtev garantuje da trošak odražava realnu ekonomsku vrednost,
+	 * sprečavajući unos negativnih vrednosti koje bi mogle dovesti do nekonzistentnosti
+	 * ili grešaka u finansijskom upravljanju. Validacija iznosa je ključna za održavanje
+	 * tačnosti i pouzdanosti finansijskih podataka.
+	 * 
+	 * @param amount iznos troška koji se postavlja.
+	 * @throws IllegalArgumentException ako je prosleđeni iznos manji ili jednak 0,
+	 * što ukazuje na nevalidan iznos troška.
+	 */
+	public void setAmount(double amount) {
+	    if (amount <= 0) {
+	        throw new IllegalArgumentException("Iznos mora biti veći od 0.");
+	    }
+	    this.amount = amount;
+	}
+
+	
 	/**
 	 * Metoda koja pravi listu od result seta za doticnu klasu.
 	 * 
@@ -176,40 +266,6 @@ public class CostItem implements Serializable, IGeneralEntity {
 		return "costList = '" + costList.getId() + "'";
 	}
 
-	/**
-	 * Metoda koja vraca tip troska.
-	 * 
-	 * @return tip troska
-	 */
-	public CostType getCostType() {
-		return costType;
-	}
 
-	/**
-	 * Metoda koja postavlja tip troska.
-	 * 
-	 * @param costType tip troska
-	 */
-	public void setCostType(CostType costType) {
-		this.costType = costType;
-	}
-
-	/**
-	 * Metoda koja vraca iznos troska.
-	 * 
-	 * @return iznos troska
-	 */
-	public double getAmount() {
-		return amount;
-	}
-
-	/**
-	 * Metoda koja postavlja iznos troska
-	 * 
-	 * @param amount iznos
-	 */
-	public void setAmount(double amount) {
-		this.amount = amount;
-	}
 
 }

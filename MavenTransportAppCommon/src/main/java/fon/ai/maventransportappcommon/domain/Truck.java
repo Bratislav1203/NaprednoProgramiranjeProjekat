@@ -15,7 +15,7 @@ import java.util.List;
  *
  * @author Bratislav
  * @version 1.0
- * @see Truck
+ *  Truck
  */
 public class Truck extends Vehicle implements Serializable, IGeneralEntity{
 
@@ -41,7 +41,7 @@ public class Truck extends Vehicle implements Serializable, IGeneralEntity{
      */
     public Truck(String transmission, String brand, int productYear, String registrationMark, double weight, String oznakaVozila) {
         super(brand, productYear, registrationMark, weight, oznakaVozila);
-        this.transmission = transmission;
+        setTransmission(transmission);
     }
 
     /**
@@ -61,12 +61,22 @@ public class Truck extends Vehicle implements Serializable, IGeneralEntity{
     }
 
     /**
-     *Metoda koja postavlja novu vrstu menjaca na kamion.
-     * @param transmission menjac
+     * Postavlja vrstu menjača kamiona nakon provere da uneta vrednost nije prazna.
+     * Validacija osigurava da svaki kamion ima definisanu vrstu menjača, što je ključni
+     * atribut za identifikaciju karakteristika vozila. Ako je prosleđena vrednost prazan string,
+     * baca se {@code IllegalArgumentException} sa odgovarajućom porukom da vrsta menjača mora
+     * imati definisanu vrednost.
+     * 
+     * @param transmission vrsta menjača koja se postavlja za kamion.
+     * @throws IllegalArgumentException ako je {@code transmission} prazan string.
      */
     public void setTransmission(String transmission) {
+        if (transmission == null || transmission.trim().isEmpty()) {
+            throw new IllegalArgumentException("Vrsta menjaca mora imati vrednost.");
+        }
         this.transmission = transmission;
     }
+
 
     /**
      *Metoda koja za povratnu vrednost ima String koji predstavlja select upit za doticnu tabelu.
