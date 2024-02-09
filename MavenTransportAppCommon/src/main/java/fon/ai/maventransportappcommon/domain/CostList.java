@@ -21,9 +21,14 @@ import java.text.SimpleDateFormat;
  */
 public class CostList implements IGeneralEntity {
 
+	/**
+	 * Parametrizovani konstruktor koji inicijalizuje listu troskova.
+	 * 
+	 * @param id - id liste troskova
+	 */
 	public CostList(int id) {
 		super();
-		this.id = id;
+		setId(id);
 	}
 
 	/**
@@ -53,53 +58,124 @@ public class CostList implements IGeneralEntity {
 	/**
 	 * Parametrizovani konstruktor klase Costs koji incijalizuje objekte ove klase.
 	 * 
-	 * @param inTotal zbir svih troskova
+	 * @param costs listaTroskova
+	 * @param drive voznja na koju se lista odnosi
 	 */
 	public CostList(List<CostItem> costs, Drive drive) {
-		this.costs = costs;
-		this.drive = drive;
+		setCosts(costs);
+		setDrive(drive);
 		if (this.costs != null)
-			this.inTotal = izracunajZbirTroskova(costs);
+			setInTotal(izracunajZbirTroskova(costs));
 	}
 
-	public CostList(int int1, double total, Drive drive2) {
-		id = int1;
-		inTotal = total;
-		drive = drive2;
 
+
+	/**
+	 * Parametrizovani konstruktor klase Costs koji incijalizuje objekte ove klase.
+	 * 
+	 * @param total ukupni troskovi
+	 * @param drive voznja na koju se lista odnosi
+	 * @param id - id liste troskova
+	 */
+	public CostList(int id, double total, Drive drive) {
+		setId(id);
+		setDrive(drive);
+		if (this.costs != null)
+			setInTotal(izracunajZbirTroskova(costs));
 	}
 
-	private double izracunajZbirTroskova(List<CostItem> costs2) {
-		double zbir = 0;
-		for (CostItem cost : costs2) {
-			zbir += cost.getAmount();
-		}
-		return zbir;
+	/**
+	 * Izračunava zbir svih troškova u listi.
+	 * 
+	 * @param costs lista troškova za koje treba izračunati zbir.
+	 * @return zbir iznosa svih troškova u listi.
+	 */
+	private double izracunajZbirTroskova(List<CostItem> costs) {
+	    double zbir = 0;
+	    for (CostItem cost : costs) {
+	        zbir += cost.getAmount();
+	    }
+	    return zbir;
 	}
 
+
+	/**
+	 * Vraća vožnju kojoj pripadaju troškovi.
+	 * 
+	 * @return objekat vožnje kojoj pripadaju troškovi.
+	 */
 	public Drive getDrive() {
-		return drive;
+	    return drive;
 	}
 
+
+	/**
+	 * Postavlja vožnju kojoj pripadaju troškovi. Vožnja ne sme biti {@code null},
+	 * čime se osigurava da svaki skup troškova ima jasno definisanu vožnju kojoj pripada.
+	 * Ova provera je ključna za praćenje troškova u kontekstu specifičnih vožnji
+	 * i sprečava asocijativne greške u radu aplikacije.
+	 * 
+	 * @param drive objekat vožnje kojoj pripadaju troškovi.
+	 * @throws IllegalArgumentException ako je prosleđeni objekat vožnje {@code null}.
+	 */
 	public void setDrive(Drive drive) {
-		this.drive = drive;
+		if(drive == null) {
+			throw new IllegalArgumentException("Drive ne sme biti null");
+		}
+	    this.drive = drive;
 	}
 
+	/**
+	 * Vraća identifikator liste troškova.
+	 * 
+	 * @return identifikator liste troškova.
+	 */
 	public int getId() {
-		return id;
+	    return id;
 	}
 
+
+    /**
+     * Postavlja identifikacioni broj listi troskova nakon provere da je uneti identifikacioni broj pozitivan.
+     * Ako je prosleđeni identifikacioni broj manji ili jednak 0, baca se {@code IllegalArgumentException}
+     * sa porukom da identifikacioni broj mora biti veći od 0.
+     * 
+     * @param id identifikacioni broj koji se postavlja listi troskova.
+     * @throws IllegalArgumentException ako je {@code id} manji ili jednak 0.
+     */
 	public void setId(int id) {
-		this.id = id;
+	    if (id <= 0) {
+	        throw new IllegalArgumentException("ID mora biti veći od 0.");
+	    }
+	    this.id = id;
 	}
 
+	/**
+	 * Vraća listu troškova.
+	 * 
+	 * @return lista troškova.
+	 */
 	public List<CostItem> getCosts() {
-		return costs;
+	    return costs;
 	}
 
+
+	/**
+	 * Postavlja novu listu troškova za objekat. Lista troškova ne sme biti {@code null},
+	 * čime se osigurava da objekat uvek ima definisanu listu troškova, čak i ako je lista prazna.
+	 * Ova provera pomaže u održavanju integriteta podataka i sprečava greške u radu aplikacije
+	 * uzrokovane neinicijalizovanim listama.
+	 * 
+	 * @param costs nova lista troškova koja se postavlja za objekat.
+	 * @throws IllegalArgumentException ako je prosleđena lista troškova {@code null}.
+	 */
 	public void setCosts(List<CostItem> costs) {
-		this.costs = costs;
+		if (costs == null) {
+	        throw new IllegalArgumentException("Troskovi ne smeju biti null.");
+	    }
+	    this.costs = costs;
 	}
+
 
 	/**
 	 * Metoda koja vraca zbir svih troskova
