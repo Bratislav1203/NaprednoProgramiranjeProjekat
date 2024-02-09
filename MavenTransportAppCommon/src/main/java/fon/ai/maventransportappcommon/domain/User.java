@@ -17,7 +17,7 @@ import java.util.Objects;
  *
  * @author Bratislav
  * @version 1.0
- * @see User
+ *  User
  */
 public class User implements IGeneralEntity{
 

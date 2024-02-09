@@ -17,7 +17,7 @@ import java.text.SimpleDateFormat;
  *
  * @author Bratislav
  * @version 1.0
- * @see CostList
+ *  CostList
  */
 public class CostList implements IGeneralEntity {
 

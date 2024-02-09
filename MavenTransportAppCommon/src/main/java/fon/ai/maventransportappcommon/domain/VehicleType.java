@@ -4,7 +4,7 @@ package fon.ai.maventransportappcommon.domain;
  *
  * @author Bratislav
  * @version 1.0
- * @see VehicleType
+ *  VehicleType
  */
 
 

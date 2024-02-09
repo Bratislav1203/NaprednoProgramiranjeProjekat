@@ -10,7 +10,7 @@ package fon.ai.maventransportappcommon.domain;
  *
  * @author Bratislav
  * @version 1.0
- * @see CostType
+ *  CostType
  */
 public enum CostType {
 

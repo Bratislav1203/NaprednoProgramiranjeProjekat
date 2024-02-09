@@ -16,7 +16,7 @@ import java.util.List;
  *
  * @author Bratislav
  * @version 1.0
- * @see Trailer
+ *  Trailer
  */
 public class Trailer extends Vehicle implements Serializable, IGeneralEntity{
 

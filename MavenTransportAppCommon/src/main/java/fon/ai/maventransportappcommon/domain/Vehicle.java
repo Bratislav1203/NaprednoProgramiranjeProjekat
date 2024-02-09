@@ -10,7 +10,7 @@ import java.util.List;
  *
  * @author Bratislav
  * @version 1.0
- * @see Vehicle
+ *  Vehicle
  */
 public class Vehicle implements Serializable, IGeneralEntity{
     

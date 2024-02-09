@@ -12,11 +12,22 @@ import fon.ai.maventransportappcommon.domain.IGeneralEntity;
 import fon.ai.maventransportappserver.so.AbstractGenericOperation;
 
 /**
- *
- * @author Windows HD
+ * Klasa SaveDriveOperation specijalizovana je za operaciju čuvanja vožnje u bazi podataka.
+ * Ova klasa proverava da li je objekat instance klase Drive i izvršava logiku čuvanja
+ * u bazu podataka, uključujući čuvanje pridruženih troškova ako postoje.
+ * Nasleđuje apstraktne metode validate i execute iz klase AbstractGenericOperation
+ * 
+ * @author Bratislav
  */
 public class SaveDriveOperation extends AbstractGenericOperation {
 
+    /**
+     * Proverava da li je prosleđeni objekat instance klase Drive.
+     * Ako nije, baca izuzetak.
+     * 
+     * @param entity objekat za validaciju.
+     * @throws Exception ako objekat nije instance klase Drive.
+     */
 	@Override
 	public void validate(Object entity) throws Exception {
 		if (!(entity instanceof Drive)) {
@@ -24,6 +35,13 @@ public class SaveDriveOperation extends AbstractGenericOperation {
 		}
 	}
 
+    /**
+     * Izvršava operaciju čuvanja vožnje u bazu podataka.
+     * Ako vožnja ima pridruženu listu troškova, čuva i nju kao i sve pojedinačne troškove.
+     * 
+     * @param entity objekat vožnje koji se čuva, očekuje se da bude tipa Drive
+     * @throws Exception ako čuvanje nije uspešno ili ako objekat nije validan.
+     */
 	@Override
 	public void execute(Object entity) throws Exception {
 		Drive d = (Drive) entity;

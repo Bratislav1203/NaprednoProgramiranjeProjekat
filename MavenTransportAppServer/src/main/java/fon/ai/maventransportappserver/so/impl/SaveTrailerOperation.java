@@ -11,12 +11,23 @@ import java.util.List;
 import fon.ai.maventransportappserver.so.AbstractGenericOperation;
 
 /**
- *
- * @author Windows HD
+ * Klasa SaveDriverOperation specijalizovana je za operaciju čuvanja prikolice u bazi podataka.
+ * Ova klasa proverava da li je objekat instance klase Vehicle i izvršava logiku čuvanja u bazu podataka
+ * Nasleđuje apstraktne metode validate i execute iz klase AbstractGenericOperation
+ * 
+ * @author Bratislav
  */
 public class SaveTrailerOperation extends AbstractGenericOperation{
 
     private List<IGeneralEntity> lista;
+    
+    /**
+     * Proverava da li je prosleđeni objekat instance klase Vehicle.
+     * Ako nije, baca izuzetak.
+     * 
+     * @param entity objekat za validaciju.
+     * @throws Exception ako objekat nije instance klase Vehicle
+     */
     @Override
     public void validate(Object entity) throws Exception {
         if(!(entity instanceof Vehicle)) {
@@ -25,6 +36,11 @@ public class SaveTrailerOperation extends AbstractGenericOperation{
         
     }
 
+    /**
+     * Izvršava operaciju čuvanja prikolice u bazu podataka.
+     * @param entity objekat prikolice koji se čuva, očekuje se da bude tipa Vehicle
+     * @throws Exception ako čuvanje nije uspešno ili ako objekat nije validan.
+     */
     @Override
     public void execute(Object entity) throws Exception {
         Vehicle v = (Vehicle) entity;

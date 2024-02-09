@@ -17,7 +17,7 @@ import java.util.List;
  *
  * @author Bratislav
  * @version 1.0
- * @see Drive
+ *  Drive
  */
 public class Drive implements Serializable, IGeneralEntity {
 
@@ -85,7 +85,15 @@ public class Drive implements Serializable, IGeneralEntity {
 
 
 
-	
+	/**
+	 * Parametrizovani konstruktor klase Drive.
+	 * 
+	 * @param date         	datum
+	 * @param facturePrice 	iznos fakture
+	 * @param trailer		prikolica
+	 * @param truck	    	kamion
+	 * @param driver       	vozac
+	 */
 	public Drive(int int1, java.util.Date date, double facturePrice, Trailer trailer, Truck truck, Driver driver) {
 		this.date = date;
 		this.facturePrice = facturePrice;
@@ -94,14 +102,24 @@ public class Drive implements Serializable, IGeneralEntity {
 		this.d = driver;
 	}
 
-	public Drive(int cmrNumber, Date date2, double facturePrice2, Trailer tr2, Truck t2, Driver d2, CostList cl) {
+	/**
+	 * Parametrizovani konstruktor klase Drive.
+	 * 
+	 * @param date         	datum
+	 * @param facturePrice 	iznos fakture
+	 * @param trailer		prikolica
+	 * @param truck	    	kamion
+	 * @param driver       	vozac
+	 * @param costList      lista troskova
+	 */
+	public Drive(int cmrNumber, Date date, double facturePrice, Trailer trailer, Truck truck, Driver driver, CostList costList) {
 		id = cmrNumber;
-		date = date2;
-		facturePrice = facturePrice2;
-		tr = tr2;
-		t = t2;
-		d = d2;
-		costList = cl;
+		date = date;
+		facturePrice = facturePrice;
+		tr = trailer;
+		t = truck;
+		d = driver;
+		costList = costList;
 	}
 
 	/**
@@ -112,7 +130,7 @@ public class Drive implements Serializable, IGeneralEntity {
 	public Driver getD() {
 		return d;
 	}
-
+	
 	/**
 	 * Metoda koja postavlja vozaca na konkretnoj voznji.
 	 * 

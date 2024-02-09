@@ -17,7 +17,7 @@ import java.util.List;
  *
  * @author Bratislav
  * @version 1.0
- * @see CostItem
+ *  CostItem
  */
 public class CostItem implements Serializable, IGeneralEntity {
 

@@ -15,7 +15,7 @@ import java.util.List;
  *
  * @author Bratislav
  * @version 1.0
- * @see Truck
+ *  Truck
  */
 public class Truck extends Vehicle implements Serializable, IGeneralEntity{
 
