@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.time.Year;
 
 /**
@@ -187,7 +188,27 @@ public class Vehicle implements Serializable, IGeneralEntity{
         return brand + " - " + productYear;
     }
 
-    /**
+	/**
+	 * Predefinisana equals metoda za poredjenje objekata.
+	 * 
+	 * @param obj
+	 * @return tacno ili ne
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Vehicle other = (Vehicle) obj;
+		return Objects.equals(brand, other.brand) && Objects.equals(oznakaVozila, other.oznakaVozila)
+				&& productYear == other.productYear && Objects.equals(registrationMark, other.registrationMark)
+				&& Double.doubleToLongBits(weight) == Double.doubleToLongBits(other.weight);
+	}
+
+	/**
      *Metoda koja vraca oznaku vozila.
      * @return oznaka vozila
      */
@@ -236,7 +257,7 @@ public class Vehicle implements Serializable, IGeneralEntity{
      */
     @Override
     public String getValues() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("DJASLKDSAA supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 /**
@@ -245,7 +266,7 @@ public class Vehicle implements Serializable, IGeneralEntity{
      */
     @Override
     public String getAttributes() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("RETRETR supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**
@@ -254,7 +275,7 @@ public class Vehicle implements Serializable, IGeneralEntity{
      */
     @Override
     public String setAttributes() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("ASDSAD supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
       /**
@@ -263,7 +284,7 @@ public class Vehicle implements Serializable, IGeneralEntity{
      */
     @Override
     public String getDeleteCondition() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    	return "registrationMark='" + getRegistrationMark() +"'";
     }
 
     /**
@@ -272,7 +293,7 @@ public class Vehicle implements Serializable, IGeneralEntity{
      */
     @Override
     public String getUpdateCondition() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("AASDD supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**
@@ -281,8 +302,12 @@ public class Vehicle implements Serializable, IGeneralEntity{
      */
     @Override
     public String getSelectContidion() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (this.registrationMark == null) {
+            throw new IllegalStateException("Registraciona oznaka ne sme biti null.");
+        }
+        return "registrationMark='" + this.registrationMark + "'";
     }
+
 
   
     

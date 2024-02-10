@@ -254,7 +254,14 @@ public class FVehicle extends javax.swing.JFrame {
         }
         if(jRadioButtonTruck.isSelected()){
             String transmission = (String) jComboBoxTransmission.getSelectedItem();
-            Vehicle truck = new Truck(transmission, brand, productYear, registrationMark, weight, "K");
+            Vehicle truck = null;
+            try {
+            	truck = new Truck(transmission, brand, productYear, registrationMark, weight, "K");
+            }
+            catch(Exception ex) {
+            	JOptionPane.showMessageDialog(this, ex.getMessage());
+            	return;
+            }
             
             try {
                 CommunicationController.getInstance().insertTruck(truck);

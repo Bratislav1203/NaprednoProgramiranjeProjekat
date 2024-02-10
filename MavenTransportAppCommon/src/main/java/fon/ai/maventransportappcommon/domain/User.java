@@ -328,7 +328,7 @@ public class User implements IGeneralEntity{
      */
     @Override
     public String getValues() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("getValues Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 /**
@@ -337,7 +337,7 @@ public class User implements IGeneralEntity{
      */
     @Override
     public String getAttributes() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("getAttributes Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
      /**
@@ -346,7 +346,7 @@ public class User implements IGeneralEntity{
      */
     @Override
     public String setAttributes() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("setAttributes Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**
@@ -355,7 +355,7 @@ public class User implements IGeneralEntity{
      */
     @Override
     public String getDeleteCondition() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("getDeleteCondition Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**
@@ -364,7 +364,7 @@ public class User implements IGeneralEntity{
      */
     @Override
     public String getUpdateCondition() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("getUpdateCondition Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
      /**

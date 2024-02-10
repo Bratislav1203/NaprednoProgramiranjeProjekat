@@ -5,13 +5,14 @@
  */
 package fon.ai.maventransportappserver.so.impl;
 
-import static org.junit.Assert.assertEquals;
 
 import java.sql.SQLException;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import fon.ai.maventransportappcommon.domain.Drive;
 import fon.ai.maventransportappcommon.domain.IGeneralEntity;
@@ -20,7 +21,7 @@ import fon.ai.maventransportappserver.so.AbstractGenericOperation;
 
 /**
  *
- * @author stackOverflow
+ * @author Bratislav
  */
 public class LoginOperationTest {
 	private static IGeneralEntity entity;
@@ -29,39 +30,33 @@ public class LoginOperationTest {
 	public LoginOperationTest() {
 	}
 
-	@Before
+	@BeforeEach
 	public void setUp() throws SQLException {
 		entity = new User();
-		((User) entity).setName("vlado1203");
+		((User) entity).setUsername("vlado1203");
 		((User) entity).setPassword("bane1203");
 		so = new LoginOperation();
 		so.db.openConnection();
 	}
 
-	@After
+	@AfterEach
 	public void tearDown() throws SQLException {
 		so.db.closeConnection();
 	}
 
-	/**
-	 * Test of validate method, of class LoginOperation.
-	 */
 	@Test
 	public void testValidate() throws Exception {
 		System.out.println("validate");
 		so.validate(entity);
 	}
 
-	@Test(expected = java.lang.Exception.class)
+	@Test
 	public void testValidate1() throws Exception {
 		System.out.println("validate1");
 		Drive test = new Drive();
-		so.validate(test);
+		assertThrows(Exception.class, () -> so.validate(test));
 	}
 
-	/**
-	 * Test of getObject method, of class LoginOperation.
-	 */
 	@Test
 	public void testGetObject() throws Exception {
 		LoginOperation instance = new LoginOperation();
@@ -70,5 +65,4 @@ public class LoginOperationTest {
 		IGeneralEntity result = instance.getObject();
 		assertEquals(expResult, result);
 	}
-
 }

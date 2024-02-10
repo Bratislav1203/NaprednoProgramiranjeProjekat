@@ -197,16 +197,16 @@ public class FCosts extends javax.swing.JFrame {
             double other = Double.parseDouble(jTextOther.getText());
             costs.add(new CostItem(CostType.other, other));
             cl.setCosts(costs);
-            cl.setId(drive.getId());
+            //cl.setId(drive.getId()); Ovo treba na drugom mestu da se doda
             for(CostItem citem : costs) {
             	citem.setCostList(cl);
             }
             if(driverSallary < 0 || fuel < 0 || toll < 0 || other < 0){
-                JOptionPane.showMessageDialog(this, "Sva polja su realni pozitivni brojevi");
+                JOptionPane.showMessageDialog(this, "Sva polja moraju biti realni pozitivni brojevi");
                 return; 
             }
         }catch(Exception ex){
-            JOptionPane.showMessageDialog(this, "Sva polja su realni pozitivni brojevi");
+            JOptionPane.showMessageDialog(this, ex.getMessage());
             return;
         }
         try {

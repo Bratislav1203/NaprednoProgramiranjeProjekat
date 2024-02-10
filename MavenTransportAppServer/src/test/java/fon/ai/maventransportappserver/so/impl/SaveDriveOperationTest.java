@@ -5,17 +5,17 @@
  */
 package fon.ai.maventransportappserver.so.impl;
 
-import static org.junit.Assert.assertEquals;
-
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import fon.ai.maventransportappcommon.domain.CostItem;
 import fon.ai.maventransportappcommon.domain.CostList;
@@ -31,7 +31,7 @@ import fon.ai.maventransportappserver.so.AbstractGenericOperation;
 
 /**
  *
- * @author stackOverflow
+ * @author Bratislav
  */
 public class SaveDriveOperationTest {
 	protected IGeneralEntity entity;
@@ -40,11 +40,11 @@ public class SaveDriveOperationTest {
 	public SaveDriveOperationTest() {
 	}
 
-	@Before
+	@BeforeEach
 	public void setUp() throws SQLException {
 		Truck truck = new Truck("AUTOMATIC", "daf", 1995, "RA013CD", 8800, "K");
 		Trailer trailer = new Trailer(VehicleType.CIRADA, 22000, "SMITZ", 1995, "AA447RA", 7500, "P");
-		Driver driver = new Driver(12345678, "Vlada", "Vladic");ArrayList<CostItem> costs = new ArrayList<>();
+		Driver driver = new Driver(123456788, "Vlada", "Vladic");ArrayList<CostItem> costs = new ArrayList<>();
 		CostItem c1 = new CostItem(CostType.driverSallary, 300);
 		CostItem c2 = new CostItem(CostType.fuel, 300);
 		CostItem c3 = new CostItem(CostType.toll, 300);
@@ -70,7 +70,7 @@ public class SaveDriveOperationTest {
 		so.db.openConnection();
 	}
 
-	@After
+	@AfterEach
 	public void tearDown() {
 		so = new DeleteDriveOperation();
 		try {
@@ -89,15 +89,12 @@ public class SaveDriveOperationTest {
 		so.validate(entity);
 	}
 
-	@Test(expected = java.lang.Exception.class)
-	public void testValidate1() throws Exception {
-		System.out.println("validate1");
-		so.validate(new User());
-	}
+	@Test
+    public void testValidate1() throws Exception {
+        System.out.println("validate1");
+        assertThrows(Exception.class, () -> so.validate(new User()));
+    }
 
-	/**
-	 * Test of execute method, of class SaveDriveOperation.
-	 */
 	@Test
 	public void testExecute() throws Exception {
 		System.out.println("execute");

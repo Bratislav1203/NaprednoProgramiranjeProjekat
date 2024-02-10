@@ -417,15 +417,8 @@ public class Drive implements Serializable, IGeneralEntity {
 
 	
 
-	/**
-	 * Metoda koja se poziva kada zelimo prikaz instance ove klase.
-	 * 
-	 * @return string id
-	 */
-	@Override
-	public String toString() {
-		return id + "";
-	}
+
+
 
 	@Override
 	public int hashCode() {
@@ -441,7 +434,6 @@ public class Drive implements Serializable, IGeneralEntity {
 	 * @param obj
 	 * @return tacno ili ne
 	 */
-
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -454,6 +446,19 @@ public class Drive implements Serializable, IGeneralEntity {
 		if (id != other.id)
 			return false;
 		return true;
+	}
+	
+	/**
+	 * Metoda koja se poziva kada zelimo prikaz instance ove klase.
+	 * 
+	 * @return string - toString metode
+	 */
+	@Override
+	public String toString() {
+		SimpleDateFormat dateFormat = new SimpleDateFormat("dd MM yyyy");
+		String formattedDate = dateFormat.format(getDate());
+		return "Drive [id=" + id + ", costList=" + costList.getId() + ", date=" + formattedDate + ", facturePrice=" + facturePrice
+				+ ", tr=" + tr + ", t=" + t + ", d=" + d + "]";
 	}
 
 }

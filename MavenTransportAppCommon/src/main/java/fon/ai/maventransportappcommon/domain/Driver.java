@@ -3,6 +3,7 @@ package fon.ai.maventransportappcommon.domain;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Klasa koja predstavlja vozaca.
@@ -188,7 +189,7 @@ public class Driver implements IGeneralEntity{
      */
     @Override
     public String getDeleteCondition() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    	return "idCard=" + this.getIDCard();
     }
 
     /**
@@ -197,7 +198,7 @@ public class Driver implements IGeneralEntity{
      */
     @Override
     public String getUpdateCondition() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Driver getUpdateCondition not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**
@@ -217,6 +218,26 @@ public class Driver implements IGeneralEntity{
     public String toString() {
         return getName() + " " +getSurname();
     }
+
+	/**
+	 * Predefinisana equals metoda za poredjenje objekata.
+	 * 
+	 * @param obj
+	 * @return tacno ili ne
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Driver other = (Driver) obj;
+		return IDCard == other.IDCard && Objects.equals(name, other.name) && Objects.equals(surname, other.surname);
+	}
+    
+    
     
     
 }

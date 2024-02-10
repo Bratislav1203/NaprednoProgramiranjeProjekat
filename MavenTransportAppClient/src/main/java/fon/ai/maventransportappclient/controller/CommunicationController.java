@@ -305,11 +305,11 @@ public class CommunicationController {
     }
 
     public Drive importFromJSON() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("ImportJson Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public void prikaziDetalje(Drive drive) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("prikaziDetalje Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public void izveziUJson(Drive d) {

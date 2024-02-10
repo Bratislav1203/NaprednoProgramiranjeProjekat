@@ -1,0 +1,15 @@
+fon\ai\maventransportappcommon\util\ResponseStatus.class
+fon\ai\maventransportappcommon\domain\CostList.class
+fon\ai\maventransportappcommon\domain\Driver.class
+fon\ai\maventransportappcommon\domain\Truck.class
+fon\ai\maventransportappcommon\domain\User.class
+fon\ai\maventransportappcommon\transfer\RequestObject.class
+fon\ai\maventransportappcommon\domain\CostItem.class
+fon\ai\maventransportappcommon\domain\CostType.class
+fon\ai\maventransportappcommon\domain\Drive.class
+fon\ai\maventransportappcommon\domain\Vehicle.class
+fon\ai\maventransportappcommon\transfer\ResponseObject.class
+fon\ai\maventransportappcommon\domain\VehicleType.class
+fon\ai\maventransportappcommon\domain\IGeneralEntity.class
+fon\ai\maventransportappcommon\domain\Trailer.class
+fon\ai\maventransportappcommon\util\Operation.class
