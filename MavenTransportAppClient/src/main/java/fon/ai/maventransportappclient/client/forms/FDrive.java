@@ -262,6 +262,7 @@ public class FDrive extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Broj CMR-a je jedinstveni broj, stoga mora biti broj > 0");
             return;
         }
+        
         Driver d = (Driver) jComboBoxDrivers.getSelectedItem();
         Truck t = (Truck) jComboBoxVehicle.getSelectedItem();
         Trailer tr = (Trailer) jComboBoxTrailer.getSelectedItem();
@@ -278,7 +279,7 @@ public class FDrive extends javax.swing.JFrame {
         }
         try {
         	CostList cl = new CostList();
-        	cl.setDrive(drive);
+        	
             ArrayList<CostItem> costs = CommunicationController.getInstance().getCosts();
             Date date;
             try{
@@ -291,8 +292,16 @@ public class FDrive extends javax.swing.JFrame {
         	cl.setCosts(costs);
             
             if(mode != FDriveMode.EDIT){
+            	Drive driveWithCosts = null;
+            	try {
+            		driveWithCosts = new Drive(cmrNumber, date, facturePrice, tr, t, d, cl);
+            	}
+            	catch(Exception ex) {
+            		JOptionPane.showMessageDialog(this, ex.getMessage());
+            		return;
+            	}
                 try {
-                    Drive driveWithCosts = new Drive(cmrNumber, date, facturePrice, tr, t, d, cl);
+                	cl.setDrive(driveWithCosts);
                     CommunicationController.getInstance().insertDrive(driveWithCosts);
                     JOptionPane.showMessageDialog(this, "Uspesno unesena voznja u bazu!");
                     fmf.omoguciIzmenu();
@@ -300,6 +309,7 @@ public class FDrive extends javax.swing.JFrame {
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(this, "Neuspesan unos voznje u bazu!");
                     ex.printStackTrace();
+                    return;
                 }
             }else{
                     System.out.println("USAO U UPDAJTOVANJE VOZNJE!!!!!");

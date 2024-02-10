@@ -5,13 +5,14 @@
  */
 package fon.ai.maventransportappserver.so.impl;
 
-import static org.junit.Assert.assertEquals;
-
 import java.sql.SQLException;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 
 import fon.ai.maventransportappcommon.domain.IGeneralEntity;
 import fon.ai.maventransportappcommon.domain.Truck;
@@ -20,7 +21,7 @@ import fon.ai.maventransportappserver.so.AbstractGenericOperation;
 
 /**
  *
- * @author stackOverflow
+ * @author Bratislav
  */
 public class SaveTruckOperationTest {
 	protected IGeneralEntity entity;
@@ -29,16 +30,20 @@ public class SaveTruckOperationTest {
 	public SaveTruckOperationTest() {
 	}
 
-	@Before
+	@BeforeEach
 	public void setUp() throws SQLException {
-		entity = new Truck("AUTOMATIC", "daf", 1995, "RA013CG", 8800, "K");
+		entity = new Truck("AUTOMATIC", "daf", 1995, "TE123ST", 8800, "K");
 		so = new SaveTruckOperation();
 		so.db.openConnection();
 	}
 
-	@After
+	@AfterEach
 	public void tearDown() {
-
+		try {
+			so.db.obrisi(entity);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -50,22 +55,20 @@ public class SaveTruckOperationTest {
 		so.validate(entity);
 	}
 
-	@Test(expected = java.lang.Exception.class)
-	public void testValidate1() throws Exception {
-		System.out.println("validate1");
-		so.validate(new User());
-	}
+    @Test
+    public void testValidate1() {
+        System.out.println("validate1");
+        assertThrows(Exception.class, () -> so.validate(new User()));
+    }
 
-	/**
-	 * Test of execute method, of class SaveTruckOperation.
-	 */
-	@Test(expected = java.lang.Exception.class)
-	public void testExecute() throws Exception {
-		System.out.println("execute");
-		so.execute(entity);
-		Truck expected = (Truck) so.db.vratiPoId((IGeneralEntity) entity);
-		Truck compare = (Truck) entity;
-		assertEquals(expected.getRegistrationMark(), compare.getRegistrationMark());
-	}
-
+    @Test
+    public void testExecute() throws Exception {
+        System.out.println("execute");
+        so.execute(entity);
+        Truck expected = (Truck) so.db.vratiPoId(entity);
+        Truck compare = (Truck) entity;
+        
+        assertEquals(expected.getRegistrationMark(), compare.getRegistrationMark());
+    }
+    
 }

@@ -5,15 +5,17 @@
  */
 package fon.ai.maventransportappserver.so.impl;
 
-import static org.junit.Assert.assertEquals;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 
 import fon.ai.maventransportappcommon.domain.Driver;
 import fon.ai.maventransportappcommon.domain.IGeneralEntity;
@@ -31,14 +33,14 @@ public class TakeDriversOperationTest {
 	public TakeDriversOperationTest() {
 	}
 
-	@Before
+	@BeforeEach
 	public void setUp() throws SQLException {
 		entity = new Driver();
 		so = new TakeDriversOperation();
 		so.db.openConnection();
 	}
 
-	@After
+	@AfterEach
 	public void tearDown() throws SQLException {
 		so.db.openConnection();
 	}
@@ -52,11 +54,11 @@ public class TakeDriversOperationTest {
 		so.validate(entity);
 	}
 
-	@Test(expected = java.lang.Exception.class)
-	public void testValidate1() throws Exception {
-		System.out.println("validate1");
-		so.validate(new User());
-	}
+    @Test
+    public void testValidate1() {
+        System.out.println("validate1");
+        assertThrows(Exception.class, () -> so.validate(new User()));
+    }
 
 	/**
 	 * Test of execute method, of class TakeDriversOperation.

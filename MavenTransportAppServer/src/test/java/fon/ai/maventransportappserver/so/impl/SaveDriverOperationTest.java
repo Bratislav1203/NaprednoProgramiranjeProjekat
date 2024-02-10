@@ -5,13 +5,16 @@
  */
 package fon.ai.maventransportappserver.so.impl;
 
-import static org.junit.Assert.assertEquals;
-
 import java.sql.SQLException;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 
 import fon.ai.maventransportappcommon.domain.Driver;
 import fon.ai.maventransportappcommon.domain.IGeneralEntity;
@@ -29,15 +32,23 @@ public class SaveDriverOperationTest {
 	public SaveDriverOperationTest() {
 	}
 
-	@Before
+	@BeforeEach
 	public void setUp() throws SQLException {
-		entity = new Driver(12345678, "Vlada", "Vladic");
+		entity = new Driver(989898987, "Proba", "Probic");
+		
+		
 		so = new SaveDriverOperation();
 		so.db.openConnection();
 	}
 
-	@After
+	@AfterEach
 	public void tearDown() {
+		try {
+			so.db.obrisi(entity);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 	}
 
 	/**
@@ -49,22 +60,19 @@ public class SaveDriverOperationTest {
 		so.validate(entity);
 	}
 
-	@Test(expected = java.lang.Exception.class)
-	public void testValidate1() throws Exception {
+	@Test
+	public void testValidate1() {
 		System.out.println("validate1");
-		so.validate(new User());
+		assertThrows(Exception.class, () -> so.validate(new User()));
 	}
 
-	/**
-	 * Test of execute method, of class SaveDriverOperation.
-	 */
-	@Test(expected = java.lang.Exception.class)
-	public void testExecute() throws Exception {
-		System.out.println("execute");
-		so.execute(entity);
-		Driver expected = (Driver) so.db.vratiPoId((IGeneralEntity) entity);
-		Driver compare = (Driver) entity;
-		assertEquals(expected.getIDCard(), compare.getIDCard());
-	}
+	@Test
+    public void testExecute() throws Exception {
+        System.out.println("execute");
+        so.execute(entity);
+        Driver expected = (Driver) so.db.vratiPoId((IGeneralEntity) entity);
+        Driver compare = (Driver) entity;
+        assertEquals(expected.getIDCard(), compare.getIDCard());
+    }
 
 }

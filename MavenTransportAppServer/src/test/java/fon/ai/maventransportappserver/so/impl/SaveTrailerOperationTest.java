@@ -5,23 +5,24 @@
  */
 package fon.ai.maventransportappserver.so.impl;
 
-import static org.junit.Assert.assertEquals;
-
 import java.sql.SQLException;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import fon.ai.maventransportappcommon.domain.IGeneralEntity;
 import fon.ai.maventransportappcommon.domain.Trailer;
+import fon.ai.maventransportappcommon.domain.Truck;
 import fon.ai.maventransportappcommon.domain.User;
 import fon.ai.maventransportappcommon.domain.VehicleType;
 import fon.ai.maventransportappserver.so.AbstractGenericOperation;
 
 /**
  *
- * @author stackOverflow
+ * @author Bratislav
  */
 public class SaveTrailerOperationTest {
 	protected IGeneralEntity entity;
@@ -30,15 +31,16 @@ public class SaveTrailerOperationTest {
 	public SaveTrailerOperationTest() {
 	}
 
-	@Before
+	@BeforeEach
 	public void setUp() throws SQLException {
-		entity = new Trailer(VehicleType.CIRADA, 22000, "SMITZ", 1995, "AA447RA", 7500, "P");
-		so = new SaveTruckOperation();
+		entity = new Trailer(VehicleType.CIRADA, 98765, "SMITZ", 1995, "TE456ST", 7500, "P");
+		so = new SaveTrailerOperation();
 		so.db.openConnection();
 	}
 
-	@After
-	public void tearDown() throws SQLException {
+	@AfterEach
+	public void tearDown() throws Exception {
+		so.db.obrisi(entity);
 		so.db.closeConnection();
 	}
 
@@ -51,22 +53,23 @@ public class SaveTrailerOperationTest {
 		so.validate(entity);
 	}
 
-	@Test(expected = java.lang.Exception.class)
-	public void testValidate1() throws Exception {
-		System.out.println("validate1");
-		so.validate(new User());
-	}
+	@Test
+    public void testValidate1() {
+        System.out.println("validate1");
+        assertThrows(Exception.class, () -> so.validate(new User()));
+    }
 
-	/**
-	 * Test of execute method, of class SaveTrailerOperation.
-	 */
-	@Test(expected = java.lang.Exception.class)
+
+	@Test
 	public void testExecute() throws Exception {
-		System.out.println("execute");
-		so.execute(entity);
-		Trailer expected = (Trailer) so.db.vratiPoId((IGeneralEntity) entity);
-		Trailer compare = (Trailer) entity;
-		assertEquals(expected.getRegistrationMark(), compare.getRegistrationMark());
+	    System.out.println("execute");
+	    so.templateExecute(entity);
+	    Trailer expected = (Trailer) so.db.vratiPoId(entity);
+        Trailer compare = (Trailer) entity;
+
+	    assertEquals(expected.getRegistrationMark(), compare.getRegistrationMark());
 	}
+	
+
 
 }

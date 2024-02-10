@@ -5,15 +5,17 @@
  */
 package fon.ai.maventransportappserver.so.impl;
 
-import static org.junit.Assert.assertEquals;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 
 import fon.ai.maventransportappcommon.domain.CostItem;
 import fon.ai.maventransportappcommon.domain.CostList;
@@ -39,11 +41,11 @@ public class TakeDriveByIDOperationTest {
 	public TakeDriveByIDOperationTest() {
 	}
 
-	@Before
+	@BeforeEach
 	public void setUp() throws Exception {
 		Truck truck = new Truck("AUTOMATIC", "daf", 1995, "RA013CD", 8800, "K");
 		Trailer trailer = new Trailer(VehicleType.CIRADA, 22000, "SMITZ", 1995, "AA447BG", 7500, "P");
-		Driver driver = new Driver(12345678, "Vlada", "Vladic");
+		Driver driver = new Driver(123456788, "Vlada", "Vladic");
 		entity = new Drive(4, new Date(), 500, trailer, truck, driver);
 
 		ArrayList<CostItem> costs = new ArrayList<>();
@@ -76,7 +78,7 @@ public class TakeDriveByIDOperationTest {
 		so.db.openConnection();
 	}
 
-	@After
+	@AfterEach
 	public void tearDown() throws Exception {
 		if(postojao == false) {
 			so = new DeleteCostItemOperation();
@@ -94,11 +96,11 @@ public class TakeDriveByIDOperationTest {
 		so.validate(entity);
 	}
 
-	@Test(expected = java.lang.Exception.class)
-	public void testValidate1() throws Exception {
-		System.out.println("validate1");
-		so.validate(new User());
-	}
+    @Test
+    public void testValidate1() {
+        System.out.println("validate1");
+        assertThrows(Exception.class, () -> so.validate(new User()));
+    }
 
 	/**
 	 * Test of execute method, of class TakeDriveByIDOperation.

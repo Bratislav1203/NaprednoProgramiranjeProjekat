@@ -157,5 +157,16 @@ public class Trailer extends Vehicle implements Serializable, IGeneralEntity{
         }        
         return list;
     }    
+    
+    /**
+     *Metoda koja za povratnu vrednost ima String koji predstavlja select upit za doticnu tabelu.
+     * @return String za select uslov nad bazom
+     */
+    @Override
+    public String getSelectContidion() {
+        return "registrationMark='" + getRegistrationMark() +"'";
+    }
+    
+    
 
 }
