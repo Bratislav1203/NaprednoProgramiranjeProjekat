@@ -15,7 +15,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="US"/>
     <property name="sun.boot.library.path" value="C:\Users\brati\.p2\pool\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.9.v20231028-0858\jre\bin"/>
-    <property name="sun.java.command" value="C:\Users\brati\AppData\Local\Temp\surefire4214285695213634336\surefirebooter-20240212105656498_3.jar C:\Users\brati\AppData\Local\Temp\surefire4214285695213634336 2024-02-12T10-56-56_066-jvmRun1 surefire-20240212105656498_1tmp surefire_0-20240212105656498_2tmp"/>
+    <property name="sun.java.command" value="C:\Users\brati\AppData\Local\Temp\surefire1246899944937610560\surefirebooter-20240212150901712_3.jar C:\Users\brati\AppData\Local\Temp\surefire1246899944937610560 2024-02-12T15-09-01_425-jvmRun1 surefire-20240212150901712_1tmp surefire_0-20240212150901712_2tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="C:\Users\brati\git\NaprednoProgramiranjeProjekatTestiranje\MavenTransportAppServer\target\test-classes;C:\Users\brati\git\NaprednoProgramiranjeProjekatTestiranje\MavenTransportAppServer\target\classes;C:\Users\brati\.m2\repository\mysql\mysql-connector-java\8.0.19\mysql-connector-java-8.0.19.jar;C:\Users\brati\.m2\repository\com\google\protobuf\protobuf-java\3.6.1\protobuf-java-3.6.1.jar;C:\Users\brati\.m2\repository\fon\ai\MavenTransportAppCommon\1.0-SNAPSHOT\MavenTransportAppCommon-1.0-SNAPSHOT.jar;C:\Users\brati\.m2\repository\com\google\code\gson\gson\2.8.6\gson-2.8.6.jar;C:\Users\brati\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.7.0\junit-jupiter-api-5.7.0.jar;C:\Users\brati\.m2\repository\org\apiguardian\apiguardian-api\1.1.0\apiguardian-api-1.1.0.jar;C:\Users\brati\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\brati\.m2\repository\org\junit\platform\junit-platform-commons\1.7.0\junit-platform-commons-1.7.0.jar;C:\Users\brati\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.7.0\junit-jupiter-engine-5.7.0.jar;C:\Users\brati\.m2\repository\org\junit\platform\junit-platform-engine\1.7.0\junit-platform-engine-1.7.0.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -31,7 +31,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\brati\AppData\Local\Temp\surefire4214285695213634336\surefirebooter-20240212105656498_3.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\brati\AppData\Local\Temp\surefire1246899944937610560\surefirebooter-20240212150901712_3.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="17.0.9+9"/>
@@ -62,7 +62,7 @@
     <system-out><![CDATA[validate
 ]]></system-out>
   </testcase>
-  <testcase name="testValidate1" classname="fon.ai.maventransportappserver.so.impl.LoginOperationTest" time="0.009">
+  <testcase name="testValidate1" classname="fon.ai.maventransportappserver.so.impl.LoginOperationTest" time="0.008">
     <system-out><![CDATA[validate1
 ]]></system-out>
   </testcase>

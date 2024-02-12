@@ -29,6 +29,27 @@ INSERT INTO `driver` (`idcard`, `name`, `surname`) VALUES
                                                        (999999999, 'Baba', 'Babic'),
                                                        (123456788, 'Vlada', 'Vladic');
 
+/*Table structure for table `user` */
+
+DROP TABLE IF EXISTS `user`;
+
+CREATE TABLE `user` (
+  `username` varchar(25) DEFAULT NULL,
+  `password` varchar(25) DEFAULT NULL,
+  `userID` decimal(10,0) NOT NULL,
+  `name` varchar(25) DEFAULT NULL,
+  `surname` varchar(25) DEFAULT NULL,
+  `email` varchar(25) DEFAULT NULL,
+  PRIMARY KEY (`userID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+/*Data for the table `user` */
+
+insert  into `user`(`username`,`password`,`userID`,`name`,`surname`,`email`) values 
+('vlado1203','bane1203',1,'Vladimir','Lazic','vladimir12934@gmail.com'),
+('bane1203','bane1203',2,'Bratislav','Lazic','bratislav.2000@gmail.com');
+
+
 /*Table structure for table `vehicle` */
 DROP TABLE IF EXISTS `vehicle`;
 CREATE TABLE `vehicle` (

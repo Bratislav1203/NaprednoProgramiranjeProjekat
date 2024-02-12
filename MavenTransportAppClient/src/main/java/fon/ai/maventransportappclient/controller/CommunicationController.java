@@ -4,7 +4,6 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import fon.ai.maventransportappclient.client.forms.FDrivesSearch;
 import fon.ai.maventransportappclient.client.forms.FMainForm;
-import fon.ai.maventransportappclient.sesija.BuildGson;
 import fon.ai.maventransportappcommon.domain.CostItem;
 import fon.ai.maventransportappcommon.domain.CostList;
 import fon.ai.maventransportappcommon.domain.Drive;
@@ -20,6 +19,8 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
+
+import fon.ai.maventransportappclient.sesija.BuildGson;
 import fon.ai.maventransportappclient.sesija.Sesija;
 import fon.ai.maventransportappcommon.domain.VehicleType;
 import fon.ai.maventransportappcommon.transfer.RequestObject;
