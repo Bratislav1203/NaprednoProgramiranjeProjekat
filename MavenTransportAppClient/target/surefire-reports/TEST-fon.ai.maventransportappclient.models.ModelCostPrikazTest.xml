@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="fon.ai.maventransportappserver.so.impl.DriverToStringTest" time="0.005" tests="1" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="fon.ai.maventransportappclient.models.ModelCostPrikazTest" time="0.117" tests="3" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="17"/>
     <property name="sun.cpu.isalist" value="amd64"/>
     <property name="sun.jnu.encoding" value="Cp1252"/>
-    <property name="java.class.path" value="C:\Users\brati\git\NaprednoProgramiranjeProjekatTestiranje\MavenTransportAppServer\target\test-classes;C:\Users\brati\git\NaprednoProgramiranjeProjekatTestiranje\MavenTransportAppServer\target\classes;C:\Users\brati\.m2\repository\mysql\mysql-connector-java\8.0.19\mysql-connector-java-8.0.19.jar;C:\Users\brati\.m2\repository\com\google\protobuf\protobuf-java\3.6.1\protobuf-java-3.6.1.jar;C:\Users\brati\.m2\repository\fon\ai\MavenTransportAppCommon\1.0-SNAPSHOT\MavenTransportAppCommon-1.0-SNAPSHOT.jar;C:\Users\brati\.m2\repository\com\google\code\gson\gson\2.8.6\gson-2.8.6.jar;C:\Users\brati\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.7.0\junit-jupiter-api-5.7.0.jar;C:\Users\brati\.m2\repository\org\apiguardian\apiguardian-api\1.1.0\apiguardian-api-1.1.0.jar;C:\Users\brati\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\brati\.m2\repository\org\junit\platform\junit-platform-commons\1.7.0\junit-platform-commons-1.7.0.jar;C:\Users\brati\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.7.0\junit-jupiter-engine-5.7.0.jar;C:\Users\brati\.m2\repository\org\junit\platform\junit-platform-engine\1.7.0\junit-platform-engine-1.7.0.jar;"/>
+    <property name="java.class.path" value="C:\Users\brati\git\NaprednoProgramiranjeProjekatTestiranje\MavenTransportAppClient\target\test-classes;C:\Users\brati\git\NaprednoProgramiranjeProjekatTestiranje\MavenTransportAppClient\target\classes;C:\Users\brati\.m2\repository\fon\ai\MavenTransportAppCommon\1.0-SNAPSHOT\MavenTransportAppCommon-1.0-SNAPSHOT.jar;C:\Users\brati\.m2\repository\com\google\code\gson\gson\2.8.6\gson-2.8.6.jar;C:\Users\brati\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.10.2\junit-jupiter-api-5.10.2.jar;C:\Users\brati\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\brati\.m2\repository\org\junit\platform\junit-platform-commons\1.10.2\junit-platform-commons-1.10.2.jar;C:\Users\brati\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\brati\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.10.2\junit-jupiter-engine-5.10.2.jar;C:\Users\brati\.m2\repository\org\junit\platform\junit-platform-engine\1.10.2\junit-platform-engine-1.10.2.jar;"/>
     <property name="java.vm.vendor" value="Eclipse Adoptium"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="user.variant" value=""/>
@@ -15,9 +15,9 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="US"/>
     <property name="sun.boot.library.path" value="C:\Users\brati\.p2\pool\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.9.v20231028-0858\jre\bin"/>
-    <property name="sun.java.command" value="C:\Users\brati\AppData\Local\Temp\surefire4214285695213634336\surefirebooter-20240212105656498_3.jar C:\Users\brati\AppData\Local\Temp\surefire4214285695213634336 2024-02-12T10-56-56_066-jvmRun1 surefire-20240212105656498_1tmp surefire_0-20240212105656498_2tmp"/>
+    <property name="sun.java.command" value="C:\Users\brati\AppData\Local\Temp\surefire6522447863184206231\surefirebooter-20240212105637476_3.jar C:\Users\brati\AppData\Local\Temp\surefire6522447863184206231 2024-02-12T10-56-37_220-jvmRun1 surefire-20240212105637476_1tmp surefire_0-20240212105637476_2tmp"/>
     <property name="jdk.debug" value="release"/>
-    <property name="surefire.test.class.path" value="C:\Users\brati\git\NaprednoProgramiranjeProjekatTestiranje\MavenTransportAppServer\target\test-classes;C:\Users\brati\git\NaprednoProgramiranjeProjekatTestiranje\MavenTransportAppServer\target\classes;C:\Users\brati\.m2\repository\mysql\mysql-connector-java\8.0.19\mysql-connector-java-8.0.19.jar;C:\Users\brati\.m2\repository\com\google\protobuf\protobuf-java\3.6.1\protobuf-java-3.6.1.jar;C:\Users\brati\.m2\repository\fon\ai\MavenTransportAppCommon\1.0-SNAPSHOT\MavenTransportAppCommon-1.0-SNAPSHOT.jar;C:\Users\brati\.m2\repository\com\google\code\gson\gson\2.8.6\gson-2.8.6.jar;C:\Users\brati\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.7.0\junit-jupiter-api-5.7.0.jar;C:\Users\brati\.m2\repository\org\apiguardian\apiguardian-api\1.1.0\apiguardian-api-1.1.0.jar;C:\Users\brati\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\brati\.m2\repository\org\junit\platform\junit-platform-commons\1.7.0\junit-platform-commons-1.7.0.jar;C:\Users\brati\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.7.0\junit-jupiter-engine-5.7.0.jar;C:\Users\brati\.m2\repository\org\junit\platform\junit-platform-engine\1.7.0\junit-platform-engine-1.7.0.jar;"/>
+    <property name="surefire.test.class.path" value="C:\Users\brati\git\NaprednoProgramiranjeProjekatTestiranje\MavenTransportAppClient\target\test-classes;C:\Users\brati\git\NaprednoProgramiranjeProjekatTestiranje\MavenTransportAppClient\target\classes;C:\Users\brati\.m2\repository\fon\ai\MavenTransportAppCommon\1.0-SNAPSHOT\MavenTransportAppCommon-1.0-SNAPSHOT.jar;C:\Users\brati\.m2\repository\com\google\code\gson\gson\2.8.6\gson-2.8.6.jar;C:\Users\brati\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.10.2\junit-jupiter-api-5.10.2.jar;C:\Users\brati\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\brati\.m2\repository\org\junit\platform\junit-platform-commons\1.10.2\junit-platform-commons-1.10.2.jar;C:\Users\brati\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\brati\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.10.2\junit-jupiter-engine-5.10.2.jar;C:\Users\brati\.m2\repository\org\junit\platform\junit-platform-engine\1.10.2\junit-platform-engine-1.10.2.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
     <property name="user.home" value="C:\Users\brati"/>
     <property name="user.language" value="en"/>
@@ -26,12 +26,12 @@
     <property name="java.home" value="C:\Users\brati\.p2\pool\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.9.v20231028-0858\jre"/>
     <property name="file.separator" value="\"/>
     <property name="style.color" value="always"/>
-    <property name="basedir" value="C:\Users\brati\git\NaprednoProgramiranjeProjekatTestiranje\MavenTransportAppServer"/>
+    <property name="basedir" value="C:\Users\brati\git\NaprednoProgramiranjeProjekatTestiranje\MavenTransportAppClient"/>
     <property name="java.vm.compressedOopsMode" value="Zero based"/>
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\brati\AppData\Local\Temp\surefire4214285695213634336\surefirebooter-20240212105656498_3.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\brati\AppData\Local\Temp\surefire6522447863184206231\surefirebooter-20240212105637476_3.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="17.0.9+9"/>
@@ -46,7 +46,7 @@
     <property name="java.vendor.url.bug" value="https://github.com/adoptium/adoptium-support/issues"/>
     <property name="java.io.tmpdir" value="C:\Users\brati\AppData\Local\Temp\"/>
     <property name="java.version" value="17.0.9"/>
-    <property name="user.dir" value="C:\Users\brati\git\NaprednoProgramiranjeProjekatTestiranje\MavenTransportAppServer"/>
+    <property name="user.dir" value="C:\Users\brati\git\NaprednoProgramiranjeProjekatTestiranje\MavenTransportAppClient"/>
     <property name="os.arch" value="amd64"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
     <property name="sun.os.patch.level" value=""/>
@@ -58,5 +58,7 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="61.0"/>
   </properties>
-  <testcase name="testToString" classname="fon.ai.maventransportappserver.so.impl.DriverToStringTest" time="0.004"/>
+  <testcase name="brojacKolona" classname="fon.ai.maventransportappclient.models.ModelCostPrikazTest" time="0.056"/>
+  <testcase name="brojacRedova" classname="fon.ai.maventransportappclient.models.ModelCostPrikazTest" time="0.003"/>
+  <testcase name="getValueAtTest" classname="fon.ai.maventransportappclient.models.ModelCostPrikazTest" time="0.011"/>
 </testsuite>

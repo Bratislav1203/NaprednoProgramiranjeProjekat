@@ -12,7 +12,7 @@ import javax.swing.table.AbstractTableModel;
 
 /**
  *
- * @author stackOverflow
+ * @author Bratislav
  */
 public class ModelDriveSearch extends AbstractTableModel{
     private ArrayList<Drive> drives;
