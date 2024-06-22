@@ -1,4 +1,4 @@
-package fon.ai.maventransportappserver.so.impl;
+package fon.ai.maventrapsortappcommon.domain;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
@@ -33,6 +33,7 @@ class DriveEqualsTest {
     void testEqualsDifferentClass() {
         Drive drive = new Drive();
         Object obj = new Object();
+        
         assertFalse(drive.equals(obj), "Objekti različitih klasa ne bi trebalo da budu jednaki.");
     }
 

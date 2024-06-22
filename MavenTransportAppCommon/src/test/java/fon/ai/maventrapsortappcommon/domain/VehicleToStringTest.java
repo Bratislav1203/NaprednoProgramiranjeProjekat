@@ -1,4 +1,4 @@
-package fon.ai.maventransportappserver.so.impl;
+package fon.ai.maventrapsortappcommon.domain;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

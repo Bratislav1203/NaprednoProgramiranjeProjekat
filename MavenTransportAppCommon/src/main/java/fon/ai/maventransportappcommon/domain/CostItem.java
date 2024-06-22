@@ -39,6 +39,11 @@ public class CostItem implements Serializable, IGeneralEntity {
 	 * Privatni atribut koji predstavlja listu troskova kojima pripada.
 	 */
 	private CostList costList;
+	
+	/**
+	 * Privatni atribut koji predstavlja kamion.
+	 */
+	private Truck t;
 
 	/**
 	 * Parametrizovani konstruktor koji inicijalizuje trosak.
@@ -105,6 +110,25 @@ public class CostItem implements Serializable, IGeneralEntity {
 	    }
 		this.costList = costList;
 	}
+
+	/**
+	 * Postavlja kamion. Kamion je ključan za prevoz robe i usluga, te njegova
+	 * validnost osigurava pravilno funkcionisanje transportnog sistema. 
+	 * Proverava se da kamion nije {@code null} kako bi se osiguralo da je svaki
+	 * transport pravilno povezan sa svojim vozilom. Ova provera je važna za
+	 * održavanje integriteta podataka unutar sistema.
+	 * 
+	 * @param t kamion koji se postavlja.
+	 * @throws IllegalArgumentException ako je {@code t} null, što ukazuje na 
+	 * nevalidan unos kamiona.
+	 */
+	public void setT(Truck t) {
+		if (t == null) {
+	        throw new IllegalArgumentException("Kamion ne sme biti null.");
+	    }
+		this.t = t;
+	}
+
 	/**
 	 * Metoda koja vraca id troska.
 	 * 
@@ -131,7 +155,6 @@ public class CostItem implements Serializable, IGeneralEntity {
 	    this.id = id;
 	}
 
-
 	/**
 	 * Metoda koja vraca tip troska.
 	 * 
@@ -147,6 +170,9 @@ public class CostItem implements Serializable, IGeneralEntity {
 	 * @param costType tip troska
 	 */
 	public void setCostType(CostType costType) {
+		if (costType == null) {
+	        throw new IllegalArgumentException("Tip troskova ne sme biti null.");
+	    }
 		this.costType = costType;
 	}
 
@@ -177,7 +203,6 @@ public class CostItem implements Serializable, IGeneralEntity {
 	    this.amount = amount;
 	}
 
-	
 	/**
 	 * Metoda koja pravi listu od result seta za doticnu klasu.
 	 * 
@@ -265,7 +290,4 @@ public class CostItem implements Serializable, IGeneralEntity {
 	public String getSelectContidion() {
 		return "costList = '" + costList.getId() + "'";
 	}
-
-
-
 }

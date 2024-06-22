@@ -1,4 +1,3 @@
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -18,27 +17,33 @@ import java.util.List;
  * @version 1.0
  *  Trailer
  */
-public class Trailer extends Vehicle implements Serializable, IGeneralEntity{
+public class Trailer extends Vehicle implements Serializable, IGeneralEntity {
 
     /**
-     *Privatni atribut koji predstavlja tip vozila.
+     * Privatni atribut koji predstavlja tip vozila.
      */
     private VehicleType vt;
 
     /**
-     *Privatni atribut koji predstavlja kapacitet utovara u prikolicu.
+     * Privatni atribut koji predstavlja kapacitet utovara u prikolicu.
      */
     private double loadCapacity;
 
     /**
-     *Neparametrizovani konstruktor klase Prikolica.
+     * Privatni atribut koji predstavlja kamion.
+     */
+    private Truck t;
+
+    /**
+     * Neparametrizovani konstruktor klase Prikolica.
      */
     public Trailer() {
         
     }
 
     /**
-     *Parametrizovani konstruktor klase prikolica koji inicijalizuje objekte ove klase.
+     * Parametrizovani konstruktor klase prikolica koji inicijalizuje objekte ove klase.
+     * 
      * @param vt tip vozila
      * @param loadCapacity nosivost
      */
@@ -48,7 +53,8 @@ public class Trailer extends Vehicle implements Serializable, IGeneralEntity{
     }
 
     /**
-     *Parametrizovani konstruktor klase prikolica koji inicijalizuje objekte ove klase.
+     * Parametrizovani konstruktor klase prikolica koji inicijalizuje objekte ove klase.
+     * 
      * @param vt tip vozila
      * @param loadCapacity nosivost
      * @param brand marka
@@ -64,7 +70,8 @@ public class Trailer extends Vehicle implements Serializable, IGeneralEntity{
     }
 
     /**
-     *Metoda koja vraca vrstu vozila.
+     * Metoda koja vraca vrstu vozila.
+     * 
      * @return vrsta vozila
      */
     public VehicleType getVt() {
@@ -72,15 +79,21 @@ public class Trailer extends Vehicle implements Serializable, IGeneralEntity{
     }
 
     /**
-     *Metoda koja postavlja vrstu vozila na novu vrednost.
+     * Metoda koja postavlja vrstu vozila na novu vrednost.
+     * 
      * @param vt vrsta vozila
      */
     public void setVt(VehicleType vt) {
+        if (vt == null) {
+            throw new IllegalArgumentException("Vrsta vozila ne sme biti null.");
+        }
         this.vt = vt;
     }
 
+
     /**
-     *Metoda koja vraca nosivost prikolice.
+     * Metoda koja vraca nosivost prikolice.
+     * 
      * @return nosivost
      */
     public double getLoadCapacity() {
@@ -100,32 +113,61 @@ public class Trailer extends Vehicle implements Serializable, IGeneralEntity{
      */
     public void setLoadCapacity(double loadCapacity) {
         if (loadCapacity <= 0) {
-            throw new IllegalArgumentException("Nosivost mora biti veći od 0.");
+            throw new IllegalArgumentException("Nosivost mora biti veća od 0.");
         }
         this.loadCapacity = loadCapacity;
     }
 
+    /**
+     * Metoda koja vraća kamion.
+     * 
+     * @return kamion.
+     */
+    public Truck getT() {
+        return t;
+    }
 
     /**
-     *Metoda koja vraca String koji predstavlja naziv relacije u bazi.
+     * Postavlja kamion. Kamion je ključan za prevoz robe i usluga, te njegova
+     * validnost osigurava pravilno funkcionisanje transportnog sistema. 
+     * Proverava se da kamion nije {@code null} kako bi se osiguralo da je svaki
+     * transport pravilno povezan sa svojim vozilom. Ova provera je važna za
+     * održavanje integriteta podataka unutar sistema.
+     * 
+     * @param t kamion koji se postavlja.
+     * @throws IllegalArgumentException ako je {@code t} null, što ukazuje na 
+     * nevalidan unos kamiona.
+     */
+    public void setT(Truck t) {
+        if (t == null) {
+            throw new IllegalArgumentException("Kamion ne sme biti null.");
+        }
+        this.t = t;
+    }
+
+    /**
+     * Metoda koja vraca String koji predstavlja naziv relacije u bazi.
+     * 
      * @return String naziv tabele
      */
     @Override
     public String getTableName() {
         return "vehicle";
     }
-    
-/**
-     *Metoda koja vraca String nalepljenih svih atributa doticne klase.
+
+    /**
+     * Metoda koja vraca String nalepljenih svih atributa doticne klase.
+     * 
      * @return String koji predstavlja sve atribute doticne klase.
      */
     @Override
     public String getAttributes() {
         return "loadcapacity, brand, productYear, registrationMark, weight, vehicletype, oznakavozila";
     }
-    
+
     /**
-     *Metoda koja vraca String vrednosti svih atributa doticne klase.
+     * Metoda koja vraca String vrednosti svih atributa doticne klase.
+     * 
      * @return String vrednosti svih atributa.
      */
     @Override
@@ -133,8 +175,9 @@ public class Trailer extends Vehicle implements Serializable, IGeneralEntity{
          return "'"+loadCapacity + "'"  + ", '" + brand + "', '"+ productYear + "', '" + registrationMark + "', '" + weight + "'" + ",'" + vt.toString() + "'" + ",'"+"P'";
     }
 
-/**
-     *Metoda koja pravi listu od result seta za doticnu klasu.
+    /**
+     * Metoda koja pravi listu od result seta za doticnu klasu.
+     * 
      * @param resultSet tip podatka koji vraca konekcija sa bazom.
      * @return lista IGeneralEntity
      * @throws Exception Bacanje instance opsteg izuzetka
@@ -156,17 +199,16 @@ public class Trailer extends Vehicle implements Serializable, IGeneralEntity{
             }
         }        
         return list;
-    }    
-    
+    }
+
     /**
-     *Metoda koja za povratnu vrednost ima String koji predstavlja select upit za doticnu tabelu.
+     * Metoda koja za povratnu vrednost ima String koji predstavlja select upit za doticnu tabelu.
+     * 
      * @return String za select uslov nad bazom
      */
     @Override
     public String getSelectContidion() {
         return "registrationMark='" + getRegistrationMark() +"'";
     }
-    
-    
 
 }

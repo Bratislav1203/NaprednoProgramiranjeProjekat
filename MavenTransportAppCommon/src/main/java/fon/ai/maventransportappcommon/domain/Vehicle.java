@@ -221,6 +221,9 @@ public class Vehicle implements Serializable, IGeneralEntity{
      * @param oznakaVozila oznaka vozila
      */
     public void setOznakaVozila(String oznakaVozila) {
+    	if (oznakaVozila == "" || oznakaVozila == null) {
+	        throw new IllegalArgumentException("Vrsta vozila ne sme biti prazan string ili null");
+	    }
         this.oznakaVozila = oznakaVozila;
     }
     
