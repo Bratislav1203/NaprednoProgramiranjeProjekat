@@ -3,27 +3,33 @@ package fon.ai.maventrapsortappcommon.domain;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import fon.ai.maventransportappcommon.domain.Drive;
 import fon.ai.maventransportappcommon.domain.Driver;
 
 public class DriverEqualsTest {
 
+	Driver driver;
+	
+	@BeforeEach
+	public void setUp() {
+		driver = new Driver();
+	}
+	
 	@Test
     void testEqualsSameObject() {
-        Driver driver = new Driver();
         assertTrue(driver.equals(driver), "Objekat bi trebalo da bude jednak samom sebi.");
     }
 
     @Test
     void testEqualsWithNull() {
-        Driver driver = new Driver();
         assertFalse(driver.equals(null), "Objekat ne bi trebalo da bude jednak null.");
     }
 
     @Test
     void testEqualsDifferentClass() {
-        Driver driver = new Driver();
         Object obj = new Object();
         assertFalse(driver.equals(obj), "Objekti različitih klasa ne bi trebalo da budu jednaki.");
     }

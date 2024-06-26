@@ -3,27 +3,32 @@ package fon.ai.maventrapsortappcommon.domain;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import fon.ai.maventransportappcommon.domain.Vehicle;
 
 public class VehicleEqualsTest {
 	
+	Vehicle vehicle;
+	
+	@BeforeEach
+	public void setUp() {
+        vehicle = new Vehicle();
+	}
+	
 	@Test
     void testEqualsSameObject() {
-        Vehicle vehicle = new Vehicle();
         assertTrue(vehicle.equals(vehicle), "Objekat bi trebalo da bude jednak samom sebi.");
     }
 
     @Test
     void testEqualsWithNull() {
-        Vehicle vehicle = new Vehicle();
         assertFalse(vehicle.equals(null), "Objekat ne bi trebalo da bude jednak null.");
     }
 
     @Test
     void testEqualsDifferentClass() {
-        Vehicle vehicle = new Vehicle();
         Object obj = new Object();
         assertFalse(vehicle.equals(obj), "Objekti različitih klasa ne bi trebalo da budu jednaki.");
     }

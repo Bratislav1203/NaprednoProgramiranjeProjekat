@@ -1,6 +1,9 @@
 package fon.ai.maventrapsortappcommon.domain;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import fon.ai.maventransportappcommon.domain.User;
 
@@ -8,79 +11,65 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class UserTest {
 
+    private User user;
+
+    @BeforeEach
+    public void setUp() {
+        user = new User();
+    }
+
     @Test
     public void testSetUserIDInvalid() {
-        User user = new User();
         assertThrows(IllegalArgumentException.class, () -> user.setUserID(0), "Očekuje se IllegalArgumentException kada je userID 0.");
     }
 
     @Test
     public void testSetUsernameNull() {
-        User user = new User();
         assertThrows(IllegalArgumentException.class, () -> user.setUsername(null), "Očekuje se IllegalArgumentException kada je username null.");
     }
 
-    @Test
-    public void testSetUsernameEmpty() {
-        User user = new User();
-        assertThrows(IllegalArgumentException.class, () -> user.setUsername(""), "Očekuje se IllegalArgumentException kada je username prazan string.");
+    @ParameterizedTest
+    @ValueSource(strings = {""," "})
+    public void testSetUsernameInvalid(String invalidUsername) {
+        assertThrows(IllegalArgumentException.class, () -> user.setUsername(invalidUsername), "Očekuje se IllegalArgumentException za nevalidan username: " + invalidUsername);
     }
 
     @Test
     public void testSetPasswordNull() {
-        User user = new User();
         assertThrows(IllegalArgumentException.class, () -> user.setPassword(null), "Očekuje se IllegalArgumentException kada je password null.");
     }
 
-    @Test
-    public void testSetPasswordEmpty() {
-        User user = new User();
-        assertThrows(IllegalArgumentException.class, () -> user.setPassword(""), "Očekuje se IllegalArgumentException kada je password prazan string.");
+    @ParameterizedTest
+    @ValueSource(strings = {""," "})
+    public void testSetPasswordInvalid(String invalidPassword) {
+        assertThrows(IllegalArgumentException.class, () -> user.setPassword(invalidPassword), "Očekuje se IllegalArgumentException za nevalidan password: " + invalidPassword);
     }
 
     @Test
     public void testSetNameNull() {
-        User user = new User();
         assertThrows(IllegalArgumentException.class, () -> user.setName(null), "Očekuje se IllegalArgumentException kada je name null.");
     }
 
-    @Test
-    public void testSetNameEmpty() {
-        User user = new User();
-        assertThrows(IllegalArgumentException.class, () -> user.setName(""), "Očekuje se IllegalArgumentException kada je name prazan string.");
-    }
-
-    @Test
-    public void testSetNameInvalid() {
-        User user = new User();
-        assertThrows(IllegalArgumentException.class, () -> user.setName("A1"), "Očekuje se IllegalArgumentException kada name sadrži nedozvoljene karaktere.");
-        assertThrows(IllegalArgumentException.class, () -> user.setName("A"), "Očekuje se IllegalArgumentException kada name ima manje od 2 karaktera.");
+    @ParameterizedTest
+    @ValueSource(strings = {"", "A1", "A"})
+    public void testSetNameInvalid(String invalidName) {
+        assertThrows(IllegalArgumentException.class, () -> user.setName(invalidName), "Očekuje se IllegalArgumentException za nevalidno ime: " + invalidName);
     }
 
     @Test
     public void testSetSurnameNull() {
-        User user = new User();
         assertThrows(IllegalArgumentException.class, () -> user.setSurname(null), "Očekuje se IllegalArgumentException kada je surname null.");
     }
 
-    @Test
-    public void testSetSurnameEmpty() {
-        User user = new User();
-        assertThrows(IllegalArgumentException.class, () -> user.setSurname(""), "Očekuje se IllegalArgumentException kada je surname prazan string.");
+    @ParameterizedTest
+    @ValueSource(strings = {"", "B1", "B"})
+    public void testSetSurnameInvalid(String invalidSurname) {
+        assertThrows(IllegalArgumentException.class, () -> user.setSurname(invalidSurname), "Očekuje se IllegalArgumentException za nevalidno prezime: " + invalidSurname);
     }
 
-    @Test
-    public void testSetSurnameInvalid() {
-        User user = new User();
-        assertThrows(IllegalArgumentException.class, () -> user.setSurname("B1"), "Očekuje se IllegalArgumentException kada surname sadrži nedozvoljene karaktere.");
-        assertThrows(IllegalArgumentException.class, () -> user.setSurname("B"), "Očekuje se IllegalArgumentException kada surname ima manje od 2 karaktera.");
-    }
-
-    @Test
-    public void testSetEmailInvalid() {
-        User user = new User();
-        assertThrows(IllegalArgumentException.class, () -> user.setEmail("invalidEmail"), "Očekuje se IllegalArgumentException kada email nije validan.");
-        assertThrows(IllegalArgumentException.class, () -> user.setEmail(""), "Očekuje se IllegalArgumentException kada je email prazan string.");
-        assertThrows(IllegalArgumentException.class, () -> user.setEmail(null), "Očekuje se IllegalArgumentException kada je email null.");
+    @ParameterizedTest
+    @ValueSource(strings = {"invalidEmail", ""})
+    public void testSetEmailInvalid(String invalidEmail) {
+        assertThrows(IllegalArgumentException.class, () -> user.setEmail(invalidEmail), "Očekuje se IllegalArgumentException za nevalidan email: " + invalidEmail);
     }
 }

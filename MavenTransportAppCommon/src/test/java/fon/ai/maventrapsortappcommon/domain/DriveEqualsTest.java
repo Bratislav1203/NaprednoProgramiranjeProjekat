@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.util.ArrayList;
 import java.util.Date;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import fon.ai.maventransportappcommon.domain.CostItem;
@@ -17,23 +18,26 @@ import fon.ai.maventransportappcommon.domain.VehicleType;
 
 class DriveEqualsTest {
 
+	Drive drive;
+	
+	@BeforeEach
+	public void setUp() {
+		drive = new Drive();
+	}
+	
     @Test
     void testEqualsSameObject() {
-        Drive drive1 = new Drive();
-        assertTrue(drive1.equals(drive1), "Objekat bi trebalo da bude jednak samom sebi.");
+        assertTrue(drive.equals(drive), "Objekat bi trebalo da bude jednak samom sebi.");
     }
 
     @Test
     void testEqualsWithNull() {
-        Drive drive = new Drive();
         assertFalse(drive.equals(null), "Objekat ne bi trebalo da bude jednak null.");
     }
 
     @Test
     void testEqualsDifferentClass() {
-        Drive drive = new Drive();
         Object obj = new Object();
-        
         assertFalse(drive.equals(obj), "Objekti različitih klasa ne bi trebalo da budu jednaki.");
     }
 
